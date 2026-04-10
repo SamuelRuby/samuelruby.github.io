@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "My First Research Post"
+title: "The Very First Sin"
 date: 2026-04-10
 ---
 
