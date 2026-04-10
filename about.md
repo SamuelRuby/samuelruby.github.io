@@ -1,10 +1,10 @@
 ---
-layout: page
+layout: post
 title: About
 ---
 
    Still a work in Progress. 
-       maybe later? :)
+       >Maybe later? :)
 
 <!--
 [<figure>
