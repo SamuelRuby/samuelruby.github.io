@@ -3,7 +3,8 @@ layout: page
 title: About
 ---
 
-Still a work in Progress. *Let's fill this in later *winks
+   Still a work in Progress. 
+       maybe later? :)
 
 <!--
 [<figure>
