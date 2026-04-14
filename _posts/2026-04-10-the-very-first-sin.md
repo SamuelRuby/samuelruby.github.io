@@ -81,14 +81,14 @@ Medical nanorobotics. Nanoscale robotic systems, operating inside the human body
 
 Monumental, yes. I will not pretend otherwise. But take a look at what we, as a species, have already accomplished.  
 
-    "If you can believe, all things are possible. (Mark 9:23)"
+"If you can believe, all things are possible. (Mark 9:23)"
 
 
 Every extraordinary thing we've ever built started as a sentence someone said out loud that sounded too large to be real.
 
 And here I am, saying it OUT LOUD.
 
-    "Possibilities live within the thin space between what exists and what could exist.”
+"Possibilities live within the thin space between what exists and what could exist.”
 
 
 ## V. What this series is
