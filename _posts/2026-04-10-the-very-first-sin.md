@@ -35,7 +35,7 @@ We, humans, are a restless species. Strangely enough, that very awareness of our
 We were terrified of what we knew. What’s worse, we're even more terrified of being forgotten.
 
 
-## II. AND YET, WE BUILD...
+## II. And yet, We Build...
 
 As we move through human history, we see that we have —mostly, tried to not repeat that sin. Somehow, despite that first terror, despite generations of being told that some things were **'JUST NOT MEANT FOR HUMAN HANDS'**, we have invented, we have created,and we have marked ourselves in the sands of time. We have thought, and then we made. Fire. The wheel. Written language. The printing press. Penicillin. The transistor. The internet. Each one of these, at some point in history, felt like an overreach. Like playing God (— which we all are, if we are to go by the story of creation). Like eating the fruit again.
 
@@ -52,7 +52,7 @@ We've been building for thousands of years, and this gap is still very much here
 That bothers me.
 
 
-## III. THE GAP
+## III. The Gap
 Looking back, we already had catastrophic asymptomatic infectious diseases like HIV. Tuberculosis. Malaria. Dengue fever. Cholera and a host of others, way before COVID. And, for some reason, we never fully committed to completely eradicating them. HIV was a gay disease. Tuberculosis belonged to the poor. Malaria was an African problem. Dengue, cholera — those were things that happened to people in certain places, certain conditions, certain bodies, certain socioeconomic class. Not everyone's problem. Not urgent enough.
 
 I can’t, for the life of me, tell you what made COVID-19 different. Was it because it suddenly affected everyone, crossing every demographic, irregardless of socioeconomic or sexual status? [Estimates](https://abcnews.com/Health/covid-transmission-asymptomatic/story?id=84599810) suggest that somewhere between [40 and 60 percent](https://pmc.ncbi.nlm.nih.gov/articles/PMC8672238/) of COVID transmission happened from people who had no idea they were sick. By the time we could see it, it was already everywhere. The death toll alone was staggering. Suddenly, the urgency that had never quite materialised for all those other diseases came. Loudly. Globally.
@@ -68,7 +68,7 @@ Set epidemics and pandemics aside for a moment. What about war zones? Remote are
 And then there's the question that sits beneath everything else I’ve said. Genetic disease. Congenital disorders. The weight of a genetic mistake embedded in the DNA, carried by every cell in the body. We've made progress with gene therapy. [CRISPR-Cas9 has opened doors that felt sealed shut a decade ago](https://pmc.ncbi.nlm.nih.gov/articles/PMC10787164/). But we're still working at the edges. We still can't, in most cases, reach inside a living body and repair the code at the source. There are millions of people every year, for whom, what the best medicine can currently offer is not enough, sometimes nowhere close.
 
 
-## IV. BIOMIMICRY- The SOLUTION, methinks!
+## IV. Biomimicry- The Solution, methinks!
 Nature has had 3.8 billion years to test designs through evolution. Biomimicry taps into that efficient, resilient, adaptable, and elegant library of solutions.
 
 The human body runs a system of extraordinary complexity and precision. Only in immunology alone, we see the activities of white blood cells patrolling and identifying foreign threats at the molecular level, in the bloodstream. Macrophages engulf and destroy foreign invaders. T-cells remember past invaders and respond faster the second time. When one gets a cut, a cascade of signals fires off — platelets, clotting factors, repair. When a cell  goes rogue, the  immune system often catches it before it becomes anything. This is the core of **immune surveillance**, a concept detailed extensively in [Janeway’s Immunobiology - chapters on immune surveillance and tumor immunology](https://www.google.com/search?q=Janeway%27s+Immunobiology+9th+edition). 
