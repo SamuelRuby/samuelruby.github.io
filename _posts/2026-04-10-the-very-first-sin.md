@@ -57,7 +57,7 @@ Looking back, we already had catastrophic asymptomatic infectious diseases like 
 
 I can’t, for the life of me, tell you what made COVID-19 different. Was it because it suddenly affected everyone, crossing every demographic, irregardless of socioeconomic or sexual status? [Estimates](https://abcnews.com/Health/covid-transmission-asymptomatic/story?id=84599810) suggest that somewhere between [40 and 60 percent](https://pmc.ncbi.nlm.nih.gov/articles/PMC8672238/) of COVID transmission happened from people who had no idea they were sick. By the time we could see it, it was already everywhere. The death toll alone was staggering. Suddenly, the urgency that had never quite materialised for all those other diseases came. Loudly. Globally.
 
-            “Better late than never, but never late is better”
+    “Better late than never, but never late is better”
 
 We’re here now, at this point, and what I keep coming back to is this: we were not wrong to primarily focus on treatment.  I mean, given the history, the urgency and the sheer scale of what these diseases were doing to human bodies, of course treatment came first. Drugs, vaccines, surgery - all of that was (still is) the right instinct. Extraordinary work has been done here and I won't diminish it. However, treatment and monitoring could have been built in parallel. They didn't have to compete. And I think the lane we largely didn't build — monitoring at a biological, molecular level, the ability to know what is happening inside the body before it becomes a symptom, before it becomes a storm — is the gap that keeps costing us. Because if we knew earlier, more precisely, what was happening and where, we wouldn't just catch diseases sooner, we would have a far wider menu of things to do about them. Treatment options multiply when you have time. Therapies become more targeted when you know exactly what you're targeting. And somewhere further down that road, advances like genetic intervention — repair at the level of the code itself — becomes not a fantasy but a next step.
 
@@ -65,8 +65,7 @@ We’re here now, at this point, and what I keep coming back to is this: we were
 
 Set epidemics and pandemics aside for a moment. What about war zones? Remote areas? Places where hospitals don't exist, where surgeons can't reach, where the infrastructure for modern medicine has collapsed or never existed in the first place? From the [WHO’s Universal Health Coverage materials](https://www.who.int/data/gho) (summarized across their UHC indicators and global health statistics): “At least half of the world’s population still does not have full coverage of essential health services.”. We have the knowledge to save lives in those places, just a muddled unclear way of delivering it.
 
-And then there's the question that sits beneath everything else I’ve said. Genetic disease. Congenital disorders. The weight of a genetic mistake embedded in the DNA, carried by every cell in the body. We've made progress with gene therapy. [CRISPR-Cas9 has opened doors that felt sealed shut a decade ago](https://pmc.ncbi.nlm.nih.gov/articles/PMC10787164/). But we're still working at the edges. We still can't, in most cases, reach inside a living body and repair the code at the source.
-These aren't just rare edge cases. There are millions of people every year, for whom, what the best medicine can currently offer is not enough, sometimes nowhere close.
+And then there's the question that sits beneath everything else I’ve said. Genetic disease. Congenital disorders. The weight of a genetic mistake embedded in the DNA, carried by every cell in the body. We've made progress with gene therapy. [CRISPR-Cas9 has opened doors that felt sealed shut a decade ago](https://pmc.ncbi.nlm.nih.gov/articles/PMC10787164/). But we're still working at the edges. We still can't, in most cases, reach inside a living body and repair the code at the source. There are millions of people every year, for whom, what the best medicine can currently offer is not enough, sometimes nowhere close.
 
 
 ## IV. BIOMIMICRY- The SOLUTION, methinks!
@@ -82,14 +81,14 @@ Medical nanorobotics. Nanoscale robotic systems, operating inside the human body
 
 Monumental, yes. I will not pretend otherwise. But take a look at what we, as a species, have already accomplished.  
 
-            "If you can believe, all things are possible. (Mark 9:23)"
+    "If you can believe, all things are possible. (Mark 9:23)"
 
 
 Every extraordinary thing we've ever built started as a sentence someone said out loud that sounded too large to be real.
 
 And here I am, saying it OUT LOUD.
 
-       "Possibilities live within the thin space between what exists and what could exist.”
+    "Possibilities live within the thin space between what exists and what could exist.”
 
 
 ## V. What this series is
