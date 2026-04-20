@@ -6,26 +6,27 @@ layout: post
 
 
 
-Before getting into fluid Physics, I’d like to revisit a [thread of thought] (https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure without equally developing monitoring infrastructure, the ability to know what is happening inside the body before it becomes a full-blown crisis.
+Before getting into fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but they looked over equally developing monitoring infrastructure, the ability to know what is happening inside the body before it becomes a full-blown crisis.
 
-In Data & ML, deployment is never the end of the pipeline. It’s the beginning of monitoring. We don’t just ship a model and pray, hoping for the best. Monitoring is built around it — data drift detection, performance degradation alerts, anomaly flags, distribution shift tracking,....... the whole shebangs. This is `cuz we know that once you stop seeing a system, you’ve already lost it. Intervention is impossible without visibility.
+In Data & ML, deployment is never the end of the pipeline. It’s the beginning of monitoring. We don’t just ship a model and pray, hoping for the best. Monitoring is built around it — data drift detection, performance degradation alerts, anomaly flags, distribution shift tracking,....... the whole shebangs. This is cuz we know that once you stop seeing a system, you’ve already lost it. Intervention is impossible without visibility.
 
 Biology is a deployed system. The most complex one we know of. And for most of human history, we've been trying to patch and fix without being able to see inside it in real time, at the scale where things actually go wrong.
 
-That's the gap. And that's what this whole project is trying to address — starting, necessarily, with understanding the environment the nanobots will have to navigate. But before you can monitor anything, you have to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it ‘The River’.
+That's the gap. And that's what this whole project is trying to address. Starting, necessarily, with understanding the environment the nanobots has to navigate. Because before one can monitor anything, we have to learn to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it ‘The River’.
                                 
-                                “Water is the driving force of all nature”
-                                        —Leonardo da Vinci
+                        “Water is the driving force of all nature”
+                                —Leonardo da Vinci
 
 
 
 
-Researchers — most of them with deep biological training, years in wet and dry labs, careers built around understanding living systems from the inside — have been working on micro and nanoscale machines for decades. They have navigated nanomotors through biological fluids, engineered DNA origami structures at gigadalton scales, built enzyme-powered systems that move autonomously, and sent things through blood that we would not have thought possible fifteen years ago. One group even described their device as a "nanovoyager in human blood",  which, if you ask me, is a befitting title ......
+Researchers — most of them with deep biological training, years in wet and dry labs, careers built around understanding living systems from the inside — have been working on micro and nanoscale machines for decades. They have navigated nanomotors through biological fluids, engineered DNA origami structures at gigadalton scales, built enzyme-powered systems that move autonomously, and sent things through blood that we would not have thought possible fifteen years ago. One group even described their device as a "nanovoyager in human blood",  which, if you ask me, is a befitting title.
 
 Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
                      
-                     "If we stand tall, it is because we stand on the shoulders of many ancestors."   
-                                                         - African proverb.
+                 "If we stand tall, it is because we stand on the s
+                             houlders of many ancestors."   
+                                                     - African proverb.
 
 
 
