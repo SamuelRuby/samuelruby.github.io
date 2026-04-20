@@ -47,43 +47,48 @@ You see, blood is not a simple fluid, It is a dense suspension of cells (red blo
 
 
 ### Laminar vs Turbulent
-All this talk about fluid--- right time, to introduce the 2 regimes of fluid flow: 
+All this talk about fluid, perfect time to introduce the 2 regimes of fluid flow: 
 - Laminar flow: smooth and orderly flow. Think honey pouring slowly. The fluid moves in parallel layers, each sliding past the next without mixing. You can describe it with clean equations. You can predict exactly where a particle will be 
-- Turbulent flow: Chaotic, swirling, full of eddies and vortices — unpredictable structures that form and collapse and reform. Think of rapids in a river, or the wake behind a fast-moving boat. The fluid mixes violently with itself. Particles get thrown in directions you cannot simply calculate.
+- Turbulent flow: chaotic, swirling, full of eddies and vortices —unpredictable structures that form and collapse and reform. Think of rapids in a river, or the wake behind a fast-moving boat. The fluid mixes violently with itself. Particles get thrown in directions you cannot simply calculate.
 
 So, how do we know which regime we're in? The Reynolds number
-![Reynolds Number](/assets/images/What-Is-Reynolds-Number.png) 
+<!-- ![Reynolds Number](/assets/images/What-Is-Reynolds-Number.png) -->
+ 
+<figure>
+  <img src="/assets/images/What-Is-Reynolds-Number.png" alt="Laminar vs turbulent flow">
+  <figcaption>Figure 1: Laminar vs turbulent flow. </figcaption>
+</figure>
+
 
 <figure>
   <img src="/assets/images/reynolds number.png" alt="Reynolds number formula"> 
-  <figcaption>Figure 1: The Reynolds formula.</figcaption>
+  <figcaption>Fig 2: The Reynolds formula.</figcaption>
 </figure>
                         
-Where:
-  ρ — fluid density (kg/m³) · for blood: ~1060 kg/m³
-  v — flow velocity (m/s)
-  D — vessel diameter (m)
-  μ — dynamic viscosity (Pa·s) · for blood: ~0.003 Pa·s
+  *For blood, fluid density  ~1060 kg/m³, and dynamic viscosity ~0.003 Pa·s*
 
-> **Note:** Re < 2300 → Laminar  ·  Re > 4000 → Turbulent  ·  2300–4000 → Transitional
+> **Note:**
+> Re < 2300 → Laminar
+> Re > 4000 → Turbulent
+> 2300–4000 → Transitional
 
 
 In blood vessels specifically, the heart's pumping action means the Reynolds number oscillates throughout each cardiac cycle. During systole, when the heart contracts and blood surges, *Re* spikes, sometimes into **transitional** or **turbulent** territory. During diastole, when the heart relaxes, it drops back towards **laminar**. 
-Transitional flow tends to appear in the places where the geometry forces the blood to accelerate, decelerate, or change direction, for example, the aortic root, the ascending aorta, the carotid bifurcation, the branching points of major arteries, and regions downstream of stenoses. These are the zones where Re is high enough (local Reynolds numbers exceed ~2000 during systole and secondary flows (Dean vortices, helical structures) begin to form)  and the vessel shape is so complex that the flow cannot stay purely laminar, but not chaotic enough to be fully turbulent.
+Transitional flow tends to appear in the places where the geometry forces the blood to accelerate, decelerate, or change direction, for example, <u>the aortic root, the ascending aorta, the carotid bifurcation, the branching points of major arteries, and regions downstream of stenoses</u>. These are the zones where Re is high enough (local Reynolds numbers exceed ~2000 during systole and secondary flows --Dean vortices, helical structures-- begin to form)  and the vessel shape is so complex that the flow cannot stay purely laminar, but not chaotic enough to be fully turbulent.
 
 So, if we run the numbers, we get:
-    Capillaries: Re ≈ 0.01. Deeply, serenely laminar.
-    Small arteries: Re ≈ 100. Still laminar.
-    Aorta: Re ≈ 4000–5000. Turbulent, especially during systole.
+> Capillaries: Re ≈ 0.01. Deeply, serenely laminar.
+> Small arteries: Re ≈ 100. Still laminar.
+> Aorta: Re ≈ 4000–5000. Turbulent, especially during systole.
 
 A great mental model I've been using is :
-    Aorta: Highway — > turbulent, high-speed, chaotic. 
-    Small arteries: Neighbourhood streets —> laminar, predictable. 
-    Capillaries: Alleyways —> ultra-laminar, almost still.
+> Aorta: Highway — > turbulent, high-speed, chaotic.
+> Small arteries: Neighbourhood streets —> laminar, predictable.
+> Capillaries: Alleyways —> ultra-laminar, almost still.
     
 
 The nanobot's critical work of targeting, sensing, treatment, all happens in the neighbourhood streets and alleyways. Which means my simulation starts where the physics becomes tractable right after the chaos of the aorta, once the nanobot has been distributed into the smaller vessels network. 
-*Turbulent flow, for the record, requires solving the full Navier-Stokes equations, a computationally expensive operation that I will talk about in coming notes.*
+**Turbulent flow, for the record, requires solving the full Navier-Stokes equations, a computationally expensive operation that I will talk about in coming notes.**
 
 
 ### The shape of flow — Poiseuille's equation
