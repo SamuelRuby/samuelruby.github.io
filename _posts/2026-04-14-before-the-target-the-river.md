@@ -210,19 +210,9 @@ Thirty-six nanometres per millisecond! In a small artery with a radius of 500 mi
 
 This scale-dependence is one of the more interesting things, and I want to share it directly because I think it is more intuitive as a picture than as a number.
 
-<figure>
-  <img src="assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap + Brownian Radial Exploration"> 
-  <figcaption>Fig 7: Nanobot on Velocity Heatmap + Brownian Radial Exploration.</figcaption>
-</figure>
+![Nanobot on Velocity Heatmap + Brownian Radial Exploration](assets/images/plot heatmap brownian.png)
 
-      DESC: 
-      Top: the parabolic velocity field rendered as a heatmap — red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow. Bottom: radial position over time. Brownian motion is present but in a small artery it is effectively invisible — the line is nearly flat. This is correct. This is what the physics says should happen here.
-
-
-<figure>
-  <img src="assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap + Brownian Radial Exploration">
-  <figcaption><b>Fig 7:</b> Nanobot on Velocity Heatmap + Brownian Radial Exploration.</figcaption>
-</figure>
+*Fig 7: Nanobot on Velocity Heatmap + Brownian Radial Exploration.*
 
 **Technical Breakdown
 * Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
@@ -233,15 +223,13 @@ Up till now, we have spoken about 1 single nanobot, but what we’re actually ai
 
 Releasing 20 nanobots simultaneously, placed at different radial positions across the vessel, we see something like this:
 
-<figure>
-  <img src="assets/images/swarm of 20 Nanobots.png" alt="Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion"> 
-  <figcaption>
-    <strong>Fig 8: Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion.</strong><br>
-    <em>The ones near the centre, in the fast red zone race ahead. 
-    <em>The ones near the walls, in the slow blue zone lag behind. 
-     As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.
-  </figcaption>
-</figure>
+![Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion](assets/images/swarm of 20 Nanobots.png)
+*Fig 8: Swarm dispersion in a parabolic velocity field.*
+
+**Technical Breakdown
+* The ones near the centre, in the fast red zone race ahead.
+* The ones near the walls, in the slow blue zone lag behind. 
+     *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.*
 
           
 ### Three vessels, three physics regimes
