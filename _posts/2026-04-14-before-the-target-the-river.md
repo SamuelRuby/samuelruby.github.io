@@ -189,30 +189,30 @@ The 1D probability of a particle to make a displacement x in a certain drection,
 
 ### Brownian Motion — Einstein-Smoluchowski
 
-The diffusion coefficient $D$ is defined by the Stokes-Einstein equation:
+The diffusion coefficient **D** is defined by the Stokes-Einstein equation:
+> k_B·T / 6πμr
 
-$$D = \frac{k_B T}{6\pi \mu r}$$
+Where:
+**D:** diffusion coefficient (m²/s)
+**k_B:** Boltzmann constant = 1.38 × 10⁻²³ J/K
+**T:** temperature = 310 K (body temperature, 37°C)
+**μ:** viscosity = 3.5 × 10⁻³ Pa·s 
+**r:** nanobot radius = 100nm
 
-**Where:**
-* $k_B$ — Boltzmann constant = $1.38 \times 10^{-23} \, \text{J/K}$
-* $T$ — temperature = $310 \, \text{K}$ (body temperature, 37°C)
-* $\mu$ — viscosity = $3.5 \times 10^{-3} \, \text{Pa}\cdot\text{s}$
-* $r$ — nanobot radius = $100 \, \text{nm}$
-
-**Result:**
-$$D \approx 6.48 \times 10^{-13} \, \text{m}^2/\text{s}$$
-
-The random displacement per timestep is modeled as $\Delta x \sim N(0, \sqrt{2D\Delta t})$. 
-At $\Delta t = 0.001 \, \text{s}$, the displacement standard deviation is $\sigma \approx 36 \, \text{nm}$ per millisecond.
+**Calculated:** D ≈ 6.48 × 10⁻¹³ m²/s
+Random displacement per timestep: Δx ~ N(0, √2DΔt)
+At Δt = 0.001s: σ ≈ 36nm per millisecond
 
 
 Thirty-six nanometres per millisecond! In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, this is significant. It is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
 
 This scale-dependence is one of the more interesting things, and I want to share it directly because I think it is more intuitive as a picture than as a number.
 
-![Nanobot on Velocity Heatmap + Brownian Radial Exploration](assets/images/plot heatmap brownian.png)
+<figure>
+  <img src="/assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap"> 
+  <figcaption> Nanobot on Velocity Heatmap.</figcaption>
+</figure>
 
-*Fig 7: Nanobot on Velocity Heatmap + Brownian Radial Exploration.*
 
 **Technical Breakdown
 * Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
