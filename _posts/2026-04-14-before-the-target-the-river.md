@@ -14,8 +14,8 @@ Biology is a deployed system. The most complex one we know of. And for most of h
 
 That's the gap. And that's what this whole project is trying to address. Starting, necessarily, with understanding the environment the nanobots has to navigate. Because before one can monitor anything, we have to learn to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it ‘The River’.
                                 
-                        “Water is the driving force of all nature”
-                                —Leonardo da Vinci
+              “Water is the driving force of all nature”
+                      —Leonardo da Vinci
 
 
 
@@ -24,9 +24,9 @@ Researchers — most of them with deep biological training, years in wet and dry
 
 Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
                      
-                 "If we stand tall, it is because we stand on the 
-                             shoulders of many ancestors."   
-                                                     - African proverb.
+       "If we stand tall, it is because we stand on the 
+                   shoulders of many ancestors."   
+                                           - African proverb
 
 
 
@@ -35,9 +35,11 @@ What we’ve worked on, up to this point, is nanobots in blood flow through the 
 
 Fluid transport is a biological imperative, it being one of the most conserved functions in complex life. Across plants, fungi, and animals, evolution repeatedly converges on the same solution: pumping, circulating, transporting, draining.
 
-The human vascular system is not a single environment. It is a hierarchy of environments, each with its own physics, its own rules, its own demands on anything trying to move through it. We have the closed loop cardiovascular system- arteries, arterioles, capillaries, venules, veins. Running alongside it is the lymphatic system, which acts as a complementary, one-way network of vessels that returns excess interstitial fluid, macromolecules, and immune cargo and returns them to the bloodstream. If the bloodstream is the highway, the lymphatics are the network of backroads, checkpoints, and cul‑de‑sacs.  Together, they  create a layered landscape of shear forces, pressures, viscosities, and biological checkpoints that anything moving through the body – engineered or otherwise– has to contend with.
+The human vascular system is not a single environment. It is a hierarchy of environments, each with its own physics, its own rules, its own demands on anything trying to move through it. We have the closed loop cardiovascular system: arteries, arterioles, capillaries, venules, veins. Running alongside it is the lymphatic system, which acts as a complementary, one-way network of vessels that returns excess interstitial fluid, macromolecules, and immune cargo and returns them to the bloodstream. If the bloodstream is the highway, the lymphatics are the network of backroads, checkpoints, and cul‑de‑sacs.  Together, they  create a layered landscape of shear forces, pressures, viscosities, and biological checkpoints that anything moving through the body – engineered or otherwise– has to contend with.
 
-The aorta sits at the top of the cardiovascular system, roughly about 25 millimeters (mm) in diameter, carrying blood directly from the heart. Below it, large arteries around 4mm. Then small arteries at 1mm, arterioles at 30 (μm). Then capillaries, about 5 to 10μm — the smallest vessels in the body, so narrow that red blood cells, which are 7 to 8μm in diameter, pass through, one at a time, physically deforming to squeeze through. Blood flow velocity across this hierarchy ranges from 100 to 600 mm/s in arteries, dropping significantly as vessels narrow. A nanobot, sized between 100 and 1000 nanometres (nm), sits comfortably below capillary diameter. Small enough to move freely without deforming. As it moves through the cardiovascular system, the physics around it keeps changing. Turbulent in the aorta, shear‑dominated in arterioles, viscosity‑ruled in capillaries. DNA origami nanorobots in literature operate between size ranges of 50 to 200nm, also liposomes used in drug delivery have been validated to work between 50 to 500nm. And at that scale, Brownian motion — the random thermal jitter of fluid molecules constantly colliding with everything around them — becomes one of the dominant forces on the system.
+The aorta sits at the top of the cardiovascular system, roughly about 25 millimeters (mm) in diameter, carrying blood directly from the heart. Below it, large arteries around 4mm. Then small arteries at 1mm. Arterioles at 30 (μm). Then capillaries, about 5 to 10μm — the smallest vessels in the body, so narrow that red blood cells, which are 7 to 8μm in diameter, pass through one at a time, physically deforming to squeeze through. Blood flow velocity across this hierarchy ranges from 100 to 600 mm/s in arteries, dropping significantly as vessels narrow. A nanobot, sized between 100 and 1000 nanometres (nm), sits comfortably below capillary diameter. Perfectly small enough to move freely without deforming. 
+
+For a nanobot, right from the point of entry, the physics around it keeps changing. Turbulent in the aorta, shear‑dominated in arterioles, viscosity‑ruled in capillaries. Also at that scale, Brownian motion — the random thermal jitter of fluid molecules constantly colliding with everything around them — becomes one of the dominant forces on the system. Why that size, you might wonder. Well, DNA origami nanorobots in literature operate between size ranges of 50 to 200nm, also liposomes used in drug delivery have been validated to work between 50 to 500nm.
 
 The therapeutic effect of the nanobot can only manifest when it gets to its target. Introduced via IV injection into a peripheral vein, it travels to the heart, gets pushed into the aorta, and from there is distributed throughout the body. Which means the first thing it encounters is not going to be a quiet capillary somewhere (which might probably be its site of action), but the aorta. And this is where the physics gets complicated– not merely because the aorta is turbulent, which we’ll get to, but because of the nature of blood itself. 
 
