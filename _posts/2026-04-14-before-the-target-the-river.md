@@ -180,6 +180,7 @@ Fluid molecules are never still. At any temperature above absolute zero, they ar
 
 
 The 1D probability of a particle to make a displacement x in a certain drection, during a time t, in a medium whose diffusion coefficient D, is given by
+
 <figure>
   <img src="/assets/images/brownian .jpg" alt="Brownian Motion Formula"> 
   <figcaption>Fig 6.2: Brownian Motion Formula.</figcaption>
