@@ -193,15 +193,15 @@ The diffusion coefficient **D** is defined by the Stokes-Einstein equation:
 > k_B·T / 6πμr
 
 Where:
-**D:** diffusion coefficient (m²/s)
-**k_B:** Boltzmann constant = 1.38 × 10⁻²³ J/K
-**T:** temperature = 310 K (body temperature, 37°C)
-**μ:** viscosity = 3.5 × 10⁻³ Pa·s 
-**r:** nanobot radius = 100nm
+* **D:** diffusion coefficient (m²/s)
+* **k_B:** Boltzmann constant = 1.38 × 10⁻²³ J/K
+* **T:** temperature = 310 K (body temperature, 37°C)
+* **μ:** viscosity = 3.5 × 10⁻³ Pa·s
+* **r:** nanobot radius = 100nm
 
 **Calculated:** D ≈ 6.48 × 10⁻¹³ m²/s
-Random displacement per timestep: Δx ~ N(0, √2DΔt)
-At Δt = 0.001s: σ ≈ 36nm per millisecond
+* Random displacement per timestep: Δx ~ N(0, √2DΔt)
+* At Δt = 0.001s: σ ≈ 36nm per millisecond
 
 
 Thirty-six nanometres per millisecond! In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, this is significant. It is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
@@ -210,7 +210,7 @@ This scale-dependence is one of the more interesting things, and I want to share
 
 <figure>
   <img src="/assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap"> 
-  <figcaption> Nanobot on Velocity Heatmap.</figcaption>
+  <figcaption>Fig 7: Nanobot on Velocity Heatmap.</figcaption>
 </figure>
 
 
@@ -223,8 +223,10 @@ Up till now, we have spoken about 1 single nanobot, but what we’re actually ai
 
 Releasing 20 nanobots simultaneously, placed at different radial positions across the vessel, we see something like this:
 
-![Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion](assets/images/swarm of 20 Nanobots.png)
-*Fig 8: Swarm dispersion in a parabolic velocity field.*
+<figure>
+  <img src="/assets/images/swarm of 20 Nanobots.png" alt="Swarm dispersion in a parabolic velocity field"> 
+  <figcaption>Fig 8: Swarm dispersion in a parabolic velocity field.</figcaption>
+</figure>
 
 **Technical Breakdown
 * The ones near the centre, in the fast red zone race ahead.
