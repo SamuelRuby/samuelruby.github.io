@@ -114,68 +114,67 @@ Where:
 * **L:** vessel length
 * **μ:** dynamic viscosity
 
+
 * At r = 0 (centre): v = v_max
 * At r = R (wall): v = 0
 
-  **The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
+**The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
 
 
 Now, in an ideal world where there is steady, laminar, pressure-driven flow through a perfect tube, blood mechanics will be calculated with Poiseuille flow, and everything will be well and good. However, Blood rarely behaves this neatly. It is pulsatile, non‑Newtonian, and shaped by branching, curvature, and compliance. So Poiseuille flow is the baseline that shows us just how far real hemodynamics diverges from the ideal. Why does this matter? Because where the nanobot sits in the vessel determines how fast it moves. A nanobot near the centre gets carried quickly -- useful if you want rapid distribution. A nanobot near the wall barely moves under flow alone. And near the wall, other physics are at play.
 
 Recall earlier, we said blood in non-newtonian and poiseuille flow is used to model newtonian fluids, so why then do we use it for biological fluids? 
 3 reasons:
-* 1- Large arteries behave approx. newtonian: In big vessels the shear rates are high, and viscosity becomes nearly constant. So blood flow here is acting nearly newtonian enough that Poiseuille assumptions aren’t catastrophic.
-* 2- Poiseuille flow gives a baseline that tells us what the flow should look like, what the velocity profile should look like, how pressure drop should scale, etc.. We compare all that to real blood, and then we see how it deviates (which can then be added as corrections (Fåhræus–Lindqvist effect, etc.)
-* 3- Full hemodynamic modeling requires Navier–Stokes, non‑Newtonian constitutive laws, plasma–cell interactions, vessel wall elasticity, pulsatile boundary conditions, etc… all CFD supercomputer territory
+* Large arteries behave approx. newtonian: In big vessels the shear rates are high, and viscosity becomes nearly constant. So blood flow here is acting nearly newtonian enough that Poiseuille assumptions aren’t catastrophic.
+* Poiseuille flow gives a baseline that tells us what the flow should look like, what the velocity profile should look like, how pressure drop should scale, etc.. We compare all that to real blood, and then we see how it deviates (which can then be added as corrections (Fåhræus–Lindqvist effect, etc.)
+* Full hemodynamic modeling requires Navier–Stokes, non‑Newtonian constitutive laws, plasma–cell interactions, vessel wall elasticity, pulsatile boundary conditions, etc… all CFD supercomputer territory
 
 
 
 ### Stokes drag
-As mentioned earlier, at the nanoscale, viscosity dominates. At human scale, if you jump into a swimming pool, inertia carries you. You coast. At nanobot scale, there is no coasting. The moment you stop applying force, you stop. The fluid's viscosity — its resistance to flow, its internal friction — overwhelms inertia completely. The relevant force here is **Stokes drag**. We can define it as the resistive force a small sphere feels as it moves through a viscous fluid.
+As mentioned earlier, at nanoscale, viscosity dominates. At human scale, if you jump into a swimming pool, inertia carries you. You coast. At nanobot scale, there is no coasting. The moment you stop applying force, you stop. The fluid's viscosity — its resistance to flow, its internal friction — overwhelms inertia completely. The relevant force here is **Stokes drag**. We can define it as the resistive force a small sphere feels as it moves through a viscous fluid.
 
 <figure>
   <img src="/assets/images/stokes law.jpg" alt="Stokes' Law"> 
-  <figcaption>Figure 1: Stokes' Law.</figcaption>
+  <figcaption>Fig 4: Stokes' Law.</figcaption>
 </figure>
 
 so:
-If nanobot moves faster than fluid --> drag will slow down
-and if it moves slower than fluid, possibly a viscous fluid  --> drag will speed up
+* If nanobot moves faster than fluid --> drag will slow down, and
+* if it moves slower than fluid, possibly a viscous fluid  --> drag will speed up
 
-SO it goes without saying that Nanobot has to match velocity of fluid
-               Relaxation time τ (time it takes for the nanobot to match the velocity of the surrounding fluid after being placed in it)
-                     τ = m/6πμr
-For a nanobot with a radius r of 100nm, and with a fluid the density of water, τ ≈ 2.2 nanoseconds
-But the same nanobot in blood, τ ≈ 0.6 – 0.8 nanoseconds
 
-So compared to water (~2 ns), blood pulls the nanobot into the local fluid velocity even faster, and as it is being sucked into this velocity, and becomes part of the flow. 
+**SO** it goes without saying that Nanobot has to match velocity of fluid
+               ** Relaxation time τ (time it takes for the nanobot to match the velocity of the surrounding fluid after being placed in it)
+                     > τ = m/6πμr
+* For a nanobot with a radius r of 100nm, and with a fluid the density of water, τ ≈ 2.2 nanoseconds. 
+* But the same nanobot in blood, τ ≈ 0.6 – 0.8 nanoseconds
+
+So compared to water (~2 ns), blood pulls the nanobot into the local fluid velocity even faster, and as it is sucked into this velocity, becomes part of the flow. 
 
 
 
 What this means physically: a nanobot placed in flowing blood almost immediately reaches the local fluid velocity at its position. And as it becomes part of the flow, all the nanobot have to do is survive the journey and know when to switch modes.
 
-My simulation confirmed this. A single nanobot placed slightly off-centre, given zero initial velocity, accelerated to the local Poiseuille velocity within the first timestep.
+Simulation confirms this. A single nanobot placed slightly off-centre, given zero initial velocity, accelerated to the local Poiseuille velocity within the first timestep.
 
-Figure 2 — Single Nanobot Trajectory + Velocity vs Time
 <figure>
-  <img src="/assets/images/plot_single_nanobot_trajectory.png" alt="Single Nanobot Trajectory + Velocity vs Time"> 
-  <figcaption>Figure 1: Single Nanobot Trajectory + Velocity vs Time.</figcaption>
+  <img src="/assets/images/plot_single_nanobot_trajectory.png" alt="Single Nanobot Trajectory + Velocity vs Time">
+  <figcaption>
+    <strong>Fig 5: Single Nanobot Trajectory + Velocity vs Time.</strong><br>
+    <em>Top:</em> nanobot path through the vessel — straight line at constant radial position, carried by the flow. 
+    <em>Bottom:</em> nanobot velocity snaps to the local blood velocity almost instantly, then holds steady. 
+    That spike at t=0 and immediate plateau is the Stokes drag doing exactly what the physics predicts. 
+    τ is so small it's barely visible on this timescale.
+  </figcaption>
 </figure>
-
-     Top: nanobot path through the vessel — straight line at constant radial position, 
-     carried by the flow. Bottom: nanobot velocity snaps to the local blood velocity almost instantly, then holds steady. 
-     That spike at t=0 and immediate plateau is the Stokes drag doing exactly what the physics predicts. τ is so small it's barely visible on this timescale.
-
-
 
 ### BROWNIAN MOTION
 Fluid molecules are never still. At any temperature above absolute zero, they are constantly jiggling — vibrating, colliding, bouncing off each other and off anything else in their path. A nanobot in blood will certainly be surrounded by billions of these collisions every microsecond, with most of them canceling out. The net result is then a random, persistent displacement — a jitter superimposed on whatever the flow is doing. At nanoscale, brownian motion isn't negligible and is actually one of the dominant forces
 
-This is Brownian motion, and at the nanoscale, it is not negligible. It is one of the dominant forces.
-
 <figure>
   <img src="/assets/images/brownian motion image.png" alt="brownian motion"> 
-  <figcaption>Figure 2.1: brownian motion.</figcaption>
+  <figcaption>Fig 6.1: Brownian motion.</figcaption>
 </figure>
 
 
@@ -183,60 +182,85 @@ This is Brownian motion, and at the nanoscale, it is not negligible. It is one o
 The 1D probability of a particle to make a displacement x in a certain drection, during a time t, in a medium whose diffusion coefficient D, is given by
 <figure>
   <img src="/assets/images/brownian .jpg" alt="Brownian Motion Formula"> 
-  <figcaption>Figure 2.2: Brownian Motion Formula.</figcaption>
+  <figcaption>Fig 6.2: Brownian Motion Formula.</figcaption>
 </figure>
 
 
-                            Brownian Motion — Einstein-Smoluchowski
-                            D = k_B·T / 6πμr
-      where D — diffusion coefficient (m²/s)
-      k_B — Boltzmann constant = 1.38 × 10⁻²³ J/K
-      T — temperature = 310 K (body temperature, 37°C)
-      μ — viscosity = 3.5 × 10⁻³ Pa·s · r — nanobot radius = 100nm
-      Calculated: D ≈ 6.48 × 10⁻¹³ m²/s
-      Random displacement per timestep: Δx ~ N(0, √2DΔt)
-      At Δt = 0.001s: σ ≈ 36nm per millisecond
+### Brownian Motion — Einstein-Smoluchowski
 
-Thirty-six nanometres per millisecond. In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, this is significant. It is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
+The diffusion coefficient $D$ is defined by the Stokes-Einstein equation:
 
-This scale-dependence is one of the more interesting things, and I want to ahare it directly because I think it is more intuitive as a picture than as a number.
+$$D = \frac{k_B T}{6\pi \mu r}$$
+
+**Where:**
+* $k_B$ — Boltzmann constant = $1.38 \times 10^{-23} \, \text{J/K}$
+* $T$ — temperature = $310 \, \text{K}$ (body temperature, 37°C)
+* $\mu$ — viscosity = $3.5 \times 10^{-3} \, \text{Pa}\cdot\text{s}$
+* $r$ — nanobot radius = $100 \, \text{nm}$
+
+**Result:**
+$$D \approx 6.48 \times 10^{-13} \, \text{m}^2/\text{s}$$
+
+The random displacement per timestep is modeled as $\Delta x \sim N(0, \sqrt{2D\Delta t})$. 
+At $\Delta t = 0.001 \, \text{s}$, the displacement standard deviation is $\sigma \approx 36 \, \text{nm}$ per millisecond.
+
+
+Thirty-six nanometres per millisecond! In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, this is significant. It is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
+
+This scale-dependence is one of the more interesting things, and I want to share it directly because I think it is more intuitive as a picture than as a number.
+
 <figure>
   <img src="assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap + Brownian Radial Exploration"> 
-  <figcaption>Figure 3: Nanobot on Velocity Heatmap + Brownian Radial Exploration.</figcaption>
+  <figcaption>Fig 7: Nanobot on Velocity Heatmap + Brownian Radial Exploration.</figcaption>
 </figure>
 
       DESC: 
       Top: the parabolic velocity field rendered as a heatmap — red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow. Bottom: radial position over time. Brownian motion is present but in a small artery it is effectively invisible — the line is nearly flat. This is correct. This is what the physics says should happen here.
 
 
+<figure>
+  <img src="assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap + Brownian Radial Exploration">
+  <figcaption><b>Fig 7:</b> Nanobot on Velocity Heatmap + Brownian Radial Exploration.</figcaption>
+</figure>
+
+**Technical Breakdown
+* Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
+* Radial Displacement (Bottom): Nanobot's radial position over time. Brownian motion is present but in a small artery it is effectively invisible, as indicated by the near-flat profile
+
+
 Up till now, we have spoken about 1 single nanobot, but what we’re actually aiming for is a swarm — millions of coordinated, distributed, collectively working nanobots. So the next question becomes: What does the Poiseuille profile do to a group?
 
 Releasing 20 nanobots simultaneously, placed at different radial positions across the vessel, we see something like this:
-Figure 4 — Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion
+
 <figure>
   <img src="assets/images/swarm of 20 Nanobots.png" alt="Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion"> 
-  <figcaption>Figure 4: Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion.</figcaption>
+  <figcaption>
+    <strong>Fig 8: Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion.</strong><br>
+    <em>The ones near the centre, in the fast red zone race ahead. 
+    <em>The ones near the walls, in the slow blue zone lag behind. 
+     As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.
+  </figcaption>
 </figure>
 
-                  
-                  Twenty nanobots released simultaneously at different radial positions. 
-                  The ones near the centre, in the fast red zone race ahead. 
-                  The ones near the walls, in the slow blue zone lag behind.  
-                  As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.
-
-
+          
 ### Three vessels, three physics regimes
 The same nanobot passing through three different vessel environments — a small artery, a capillary, and an artificially exaggerated Brownian scenario (built purely for visual purposes, to make the jitter visible at a scale it wouldn't normally reach) shows the scale-dependence more visibly.
 
 <img width="1589" height="1190" alt="ANIMATED COMPARISON in capillaries, arteries and exag brownian" src="https://github.com/user-attachments/assets/90f01b58-156d-4a71-8a2b-82c38b70892d" />
 
-Figure 5 — Three Scenarios Side by Side (Static)
-                DESC: Left column: nanobot trajectory in each vessel type. Right column: radial position over time, showing Brownian fluctuations.
-Small artery (top): Brownian motion is negligible (36nm per millisecond — but against a 500μm vessel radius it registers as nothing). 
-Capillary (middle): the wiggly green line, Brownian motion is more noticeable. Here the vessel is 5μm across, and the same 36nm Brownian kick is now a real force. Due to slow flow, dominant viscosity, extremely low Re, and relatively larger diffusion coefficient
-Exaggerated Brownian (bottom)
-
-
+<figure>
+  <img src="assets/images/swarm of 20 Nanobots.png" alt="Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion"> 
+  <figcaption>
+    <strong>Fig 9: Three Scenarios Side by Side (Static).</strong><br>
+    <em>Left column:</em> Nanobot trajectory in each vessel type. 
+    <em>Right column:</em> Radial position over time, showing Brownian fluctuations.
+    <em>Small artery (top):</em> Brownian motion is negligible (36nm per millisecond — but against a 500μm vessel radius it registers as nothing).
+    <em>Capillary (middle):</em> the wiggly green line, Brownian motion is more noticeable. Here the vessel is 5μm across, and the same 36nm Brownian kick is now a real force. Due to slow flow, dominant
+    viscosity, extremely low Re, and relatively larger diffusion coefficient
+    Exaggerated Brownian (bottom)
+  </figcaption>
+</figure>
+      
 ## What comes next
 
 Phase 1 established the fundamentals. The parabola is real. The drag is instantaneous. Brownian motion is scale-dependent and matters in capillaries. The swarm disperses with the flow.
