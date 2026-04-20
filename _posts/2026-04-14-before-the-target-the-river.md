@@ -240,7 +240,6 @@ The same nanobot passing through three different vessel environments — a small
 <img width="1589" height="1190" alt="ANIMATED COMPARISON in capillaries, arteries and exag brownian" src="https://github.com/user-attachments/assets/90f01b58-156d-4a71-8a2b-82c38b70892d" />
 
 <figure>
-  <img src="assets/images/swarm of 20 Nanobots.png" alt="Swarm of 20 Nanobots: Dispersion by Blood Flow + Brownian Motion"> 
   <figcaption>
     <strong>Fig 9: Three Scenarios Side by Side (Static).</strong><br>
     <em>Left column:</em> Nanobot trajectory in each vessel type. 
