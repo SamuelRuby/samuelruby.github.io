@@ -14,8 +14,8 @@ Biology is a deployed system. The most complex one we know of. And for most of h
 
 That's the gap. And that's what this whole project is trying to address. Starting, necessarily, with understanding the environment the nanobots has to navigate. Because before one can monitor anything, we have to learn to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it ‘The River’.
                                 
-              “Water is the driving force of all nature”
-                      —Leonardo da Vinci
+          “Water is the driving force of all nature”
+                  —Leonardo da Vinci
 
 
 
@@ -23,10 +23,10 @@ That's the gap. And that's what this whole project is trying to address. Startin
 Researchers — most of them with deep biological training, years in wet and dry labs, careers built around understanding living systems from the inside — have been working on micro and nanoscale machines for decades. They have navigated nanomotors through biological fluids, engineered DNA origami structures at gigadalton scales, built enzyme-powered systems that move autonomously, and sent things through blood that we would not have thought possible fifteen years ago. One group even described their device as a "nanovoyager in human blood",  which, if you ask me, is a befitting title.
 
 Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
-                     
-       "If we stand tall, it is because we stand on the 
-                   shoulders of many ancestors."   
-                                           - African proverb
+                   
+     "If we stand tall, it is because we stand on the 
+                 shoulders of many ancestors."   
+                                         - African proverb
 
 
 
@@ -56,7 +56,7 @@ So, how do we know which regime we're in? The Reynolds number
  
 <figure>
   <img src="/assets/images/What-Is-Reynolds-Number.png" alt="Laminar vs turbulent flow">
-  <figcaption>Figure 1: Laminar vs turbulent flow. </figcaption>
+  <figcaption>Fig 1: Laminar vs turbulent flow. </figcaption>
 </figure>
 
 
@@ -68,23 +68,22 @@ So, how do we know which regime we're in? The Reynolds number
   *For blood, fluid density  ~1060 kg/m³, and dynamic viscosity ~0.003 Pa·s*
 
 > **Note:**
-> Re < 2300 → Laminar
-> Re > 4000 → Turbulent
-> 2300–4000 → Transitional
-
+* ** Re** < 2300 → Laminar
+* ** Re** > 4000 → Turbulent
+* 2300–4000 → Transitional
 
 In blood vessels specifically, the heart's pumping action means the Reynolds number oscillates throughout each cardiac cycle. During systole, when the heart contracts and blood surges, *Re* spikes, sometimes into **transitional** or **turbulent** territory. During diastole, when the heart relaxes, it drops back towards **laminar**. 
 Transitional flow tends to appear in the places where the geometry forces the blood to accelerate, decelerate, or change direction, for example, <u>the aortic root, the ascending aorta, the carotid bifurcation, the branching points of major arteries, and regions downstream of stenoses</u>. These are the zones where Re is high enough (local Reynolds numbers exceed ~2000 during systole and secondary flows --Dean vortices, helical structures-- begin to form)  and the vessel shape is so complex that the flow cannot stay purely laminar, but not chaotic enough to be fully turbulent.
 
 So, if we run the numbers, we get:
-> Capillaries: Re ≈ 0.01. Deeply, serenely laminar.
-> Small arteries: Re ≈ 100. Still laminar.
-> Aorta: Re ≈ 4000–5000. Turbulent, especially during systole.
+* **Capillaries:** Re ≈ 0.01. Deeply, serenely laminar.
+* **Small arteries:** Re ≈ 100. Still laminar.
+* **Aorta:** Re ≈ 4000–5000. Turbulent, especially during systole.
 
 A great mental model I've been using is :
-> Aorta: Highway — > turbulent, high-speed, chaotic.
-> Small arteries: Neighbourhood streets —> laminar, predictable.
-> Capillaries: Alleyways —> ultra-laminar, almost still.
+* **Aorta (Highway):** Turbulent, high-speed, chaotic.
+* **Small arteries (Neighbourhood streets):** Laminar, predictable.
+* **Capillaries (Alleyways):** Ultra-laminar, almost still.
     
 
 The nanobot's critical work of targeting, sensing, treatment, all happens in the neighbourhood streets and alleyways. Which means my simulation starts where the physics becomes tractable right after the chaos of the aorta, once the nanobot has been distributed into the smaller vessels network. 
@@ -96,38 +95,38 @@ The nanobot's critical work of targeting, sensing, treatment, all happens in the
 Inside a small blood vessel (helps to visualize this as a roughly cylindrical tube), flow driven by pressure takes a very specific shape. It is not uniform. The fluid at the very centre of the vessel moves fastest, while the fluid at the wall moves slowest, technically reaching zero velocity right at the wall surface. The transition between those two extremes follows like a parabola.
 <figure>
   <img src="/assets/images/Poiseuille Flow Velcity Profile.png" alt="Poiseuille Flow Velcity Profile"> 
-  <figcaption>The parabolic velocity profile across a small blood vessel (radius 0.5mm). Velocity peaks at the centreline (~360 mm/s) and falls to exactly zero at the vessel walls.</figcaption>
+  <figcaption> Fig 3: The parabolic velocity profile across a small blood vessel (radius 0.5mm). Velocity peaks at the centreline (~360 mm/s) and falls to exactly zero at the vessel walls.</figcaption>
 </figure>
-
-
 
  Jean Léonard Marie Poiseuille and Gotthilf Heinrich Ludwig Hagen solved this and gave us the Hagen-Poiseuille equation.
  
 <figure>
   <img src="/assets/images/Poiseuille Flow.png" alt="Hagen-Poiseuille equation"> 
-  <figcaption>Figure 1: The Hagen-Poiseuille equation.</figcaption>
+  <figcaption> The Hagen-Poiseuille equation.</figcaption>
 </figure>
 
 Where:
-  r — radial position (distance from centre)
-  R — vessel radius
-  v_max — maximum velocity at centreline = ΔP·R² / 4μL
-  ΔP — pressure difference driving flow
-  L — vessel length · μ — dynamic viscosity
 
-At r = 0 (centre): v = v_max  
-At r = R (wall): v = 0
+* **r:** radial position (distance from centre)
+* **R:** vessel radius
+* **v_max:** maximum velocity at centreline = ΔP·R² / 4μL
+* **ΔP:** pressure difference driving flow
+* **L:** vessel length
+* **μ:** dynamic viscosity
 
-**The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
+* At r = 0 (centre): v = v_max
+* At r = R (wall): v = 0
+
+  **The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
 
 
-Now, in an ideal world where there is steady, laminar, pressure-driven flow through a perfect tube, blood mechanics will be calculated with Poiseuille flow, and everything will be well and good. However, Blood rarely behaves this neatly. It is pulsatile, non‑Newtonian, and shaped by branching, curvature, and compliance. So Poiseuille flow is the baseline that shows us just how far real hemodynamics diverges from the ideal. Why does this matter? Because where the nanobot sits in the vessel determines how fast it moves. A nanobot near the centre gets carried quickly, useful if you want rapid distribution. A nanobot near the wall barely moves under flow alone. And near the wall, other physics starts to matter.
+Now, in an ideal world where there is steady, laminar, pressure-driven flow through a perfect tube, blood mechanics will be calculated with Poiseuille flow, and everything will be well and good. However, Blood rarely behaves this neatly. It is pulsatile, non‑Newtonian, and shaped by branching, curvature, and compliance. So Poiseuille flow is the baseline that shows us just how far real hemodynamics diverges from the ideal. Why does this matter? Because where the nanobot sits in the vessel determines how fast it moves. A nanobot near the centre gets carried quickly -- useful if you want rapid distribution. A nanobot near the wall barely moves under flow alone. And near the wall, other physics are at play.
 
 Recall earlier, we said blood in non-newtonian and poiseuille flow is used to model newtonian fluids, so why then do we use it for biological fluids? 
 3 reasons:
-    1- Large arteries behave approx. newtonian: In big vessels the shear rates are high, and viscosity becomes nearly constant. So blood flow here is acting nearly newtonian enough that Poiseuille assumptions aren’t catastrophic.
-    2- Poiseuille flow gives a baseline that tells us what the flow should look like, what the velocity profile should look like, how pressure drop should scale, etc.. we compare all that to real blood, and then we see how it deviates (which can then be added as corrections (Fåhræus–Lindqvist effect, etc.)
-    3- Full hemodynamic modeling requires Navier–Stokes, non‑Newtonian constitutive laws, plasma–cell interactions, vessel wall elasticity, pulsatile boundary conditions, etc… all CFD supercomputer territory
+* 1- Large arteries behave approx. newtonian: In big vessels the shear rates are high, and viscosity becomes nearly constant. So blood flow here is acting nearly newtonian enough that Poiseuille assumptions aren’t catastrophic.
+* 2- Poiseuille flow gives a baseline that tells us what the flow should look like, what the velocity profile should look like, how pressure drop should scale, etc.. We compare all that to real blood, and then we see how it deviates (which can then be added as corrections (Fåhræus–Lindqvist effect, etc.)
+* 3- Full hemodynamic modeling requires Navier–Stokes, non‑Newtonian constitutive laws, plasma–cell interactions, vessel wall elasticity, pulsatile boundary conditions, etc… all CFD supercomputer territory
 
 
 
