@@ -24,8 +24,8 @@ Researchers — most of them with deep biological training, years in wet and dry
 
 Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
                      
-                 "If we stand tall, it is because we stand on the s
-                             houlders of many ancestors."   
+                 "If we stand tall, it is because we stand on the 
+                             shoulders of many ancestors."   
                                                      - African proverb.
 
 
