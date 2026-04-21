@@ -1,12 +1,12 @@
 ---
 title: Before the Target, the River 
-date: 2026-04-14
+date: 2026-04-20
 layout: post
 ---
 
 
 
-Before getting into fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but they looked over equally developing monitoring infrastructure, the ability to know what is happening inside the body before it becomes a full-blown crisis.
+Before getting into fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but it overlooked the equally important task of developing monitoring infrastructure, the capability to detect internal physiological changes before they escalate into full-blown clinical crisis.
 
 In Data & ML, deployment is never the end of the pipeline. It’s the beginning of monitoring. We don’t just ship a model and pray, hoping for the best. Monitoring is built around it — data drift detection, performance degradation alerts, anomaly flags, distribution shift tracking,....... the whole shebangs. This is cuz we know that once you stop seeing a system, you’ve already lost it. Intervention is impossible without visibility.
 
@@ -18,20 +18,17 @@ That's the gap. And that's what this whole project is trying to address. Startin
                   —Leonardo da Vinci
 
 
-
-
 Researchers — most of them with deep biological training, years in wet and dry labs, careers built around understanding living systems from the inside — have been working on micro and nanoscale machines for decades. They have navigated nanomotors through biological fluids, engineered DNA origami structures at gigadalton scales, built enzyme-powered systems that move autonomously, and sent things through blood that we would not have thought possible fifteen years ago. One group even described their device as a "nanovoyager in human blood",  which, if you ask me, is a befitting title.
-
-Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
                    
      "If we stand tall, it is because we stand on the 
                  shoulders of many ancestors."   
                                          - African proverb
-
+                                         
+Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
 
 
 ## The Architecture of Flow
-What we’ve worked on, up to this point, is nanobots in blood flow through the cardiovascular system. So, we have to talk about it
+What we’ve worked on, up to this point, is nanobots in blood flow through the cardiovascular system. So, we have to talk about this  fluid — blood.
 
 Fluid transport is a biological imperative, it being one of the most conserved functions in complex life. Across plants, fungi, and animals, evolution repeatedly converges on the same solution: pumping, circulating, transporting, draining.
 
@@ -68,8 +65,8 @@ So, how do we know which regime we're in? The Reynolds number
   *For blood, fluid density  ~1060 kg/m³, and dynamic viscosity ~0.003 Pa·s*
 
 > **Note:**
-* ** Re** < 2300 → Laminar
-* ** Re** > 4000 → Turbulent
+* **Re** < 2300 → Laminar
+* **Re** > 4000 → Turbulent
 * 2300–4000 → Transitional
 
 In blood vessels specifically, the heart's pumping action means the Reynolds number oscillates throughout each cardiac cycle. During systole, when the heart contracts and blood surges, *Re* spikes, sometimes into **transitional** or **turbulent** territory. During diastole, when the heart relaxes, it drops back towards **laminar**. 
@@ -106,24 +103,22 @@ Inside a small blood vessel (helps to visualize this as a roughly cylindrical tu
 </figure>
 
 Where:
-
 * **r:** radial position (distance from centre)
 * **R:** vessel radius
 * **v_max:** maximum velocity at centreline = ΔP·R² / 4μL
 * **ΔP:** pressure difference driving flow
 * **L:** vessel length
 * **μ:** dynamic viscosity
-
-
-* At r = 0 (centre): v = v_max
-* At r = R (wall): v = 0
+        
+        * At r = 0 (centre): v = v_max
+        * At r = R (wall): v = 0
 
 **The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
 
 
 Now, in an ideal world where there is steady, laminar, pressure-driven flow through a perfect tube, blood mechanics will be calculated with Poiseuille flow, and everything will be well and good. However, Blood rarely behaves this neatly. It is pulsatile, non‑Newtonian, and shaped by branching, curvature, and compliance. So Poiseuille flow is the baseline that shows us just how far real hemodynamics diverges from the ideal. Why does this matter? Because where the nanobot sits in the vessel determines how fast it moves. A nanobot near the centre gets carried quickly -- useful if you want rapid distribution. A nanobot near the wall barely moves under flow alone. And near the wall, other physics are at play.
 
-Recall earlier, we said blood in non-newtonian and poiseuille flow is used to model newtonian fluids, so why then do we use it for biological fluids? 
+Recall earlier, we said blood is non-newtonian and poiseuille flow is used to model newtonian fluids, so why then do we use it for biological fluids? 
 3 reasons:
 * Large arteries behave approx. newtonian: In big vessels the shear rates are high, and viscosity becomes nearly constant. So blood flow here is acting nearly newtonian enough that Poiseuille assumptions aren’t catastrophic.
 * Poiseuille flow gives a baseline that tells us what the flow should look like, what the velocity profile should look like, how pressure drop should scale, etc.. We compare all that to real blood, and then we see how it deviates (which can then be added as corrections (Fåhræus–Lindqvist effect, etc.)
@@ -145,8 +140,10 @@ so:
 
 
 **SO** it goes without saying that Nanobot has to match velocity of fluid
-               ** Relaxation time τ (time it takes for the nanobot to match the velocity of the surrounding fluid after being placed in it)
-                     > τ = m/6πμr
+
+    "Relaxation time τ (time it takes for the nanobot to match the velocity of the surrounding fluid after being placed in it)"
+                          τ = m/6πμr
+                          
 * For a nanobot with a radius r of 100nm, and with a fluid the density of water, τ ≈ 2.2 nanoseconds. 
 * But the same nanobot in blood, τ ≈ 0.6 – 0.8 nanoseconds
 
@@ -190,17 +187,17 @@ The 1D probability of a particle to make a displacement x in a certain drection,
 ### Brownian Motion — Einstein-Smoluchowski
 
 The diffusion coefficient **D** is defined by the Stokes-Einstein equation:
-> k_B·T / 6πμr
+    > **k_B·T / 6πμr**
 
 Where:
 * **D:** diffusion coefficient (m²/s)
 * **k_B:** Boltzmann constant = 1.38 × 10⁻²³ J/K
 * **T:** temperature = 310 K (body temperature, 37°C)
-* **μ:** viscosity = 3.5 × 10⁻³ Pa·s
+* **μ:** viscosity = 3.5 × 10⁻³ Pa·s (blood viscosity)
 * **r:** nanobot radius = 100nm
 
-**Calculated:** D ≈ 6.48 × 10⁻¹³ m²/s
-* Random displacement per timestep: Δx ~ N(0, √2DΔt)
+Now at body temperature, with the above given radius and viscosity, a nanobot with the above radius will have **D ≈ 6.48 × 10⁻¹³ m²/s**
+* Random displacement(Brownian step) per timestep: Δx ~ N(0, √2DΔt)
 * At Δt = 0.001s: σ ≈ 36nm per millisecond
 
 
@@ -214,12 +211,12 @@ This scale-dependence is one of the more interesting things, and I want to share
 </figure>
 
 
-**Technical Breakdown
-* Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
+**Technical Breakdown**
+* Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. Red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
 * Radial Displacement (Bottom): Nanobot's radial position over time. Brownian motion is present but in a small artery it is effectively invisible, as indicated by the near-flat profile
 
 
-Up till now, we have spoken about 1 single nanobot, but what we’re actually aiming for is a swarm — millions of coordinated, distributed, collectively working nanobots. So the next question becomes: What does the Poiseuille profile do to a group?
+Up till now, we have spoken about 1 single nanobot, but what we’re actually aiming for is a swarm — thousands/millions of coordinated, distributed, collectively working nanobots. So the next question becomes: What does the Poiseuille profile do to a group?
 
 Releasing 20 nanobots simultaneously, placed at different radial positions across the vessel, we see something like this:
 
@@ -228,18 +225,17 @@ Releasing 20 nanobots simultaneously, placed at different radial positions acros
   <figcaption>Fig 8: Swarm dispersion in a parabolic velocity field.</figcaption>
 </figure>
 
-**Technical Breakdown
+**Technical Breakdown**
 * The ones near the centre, in the fast red zone race ahead.
-* The ones near the walls, in the slow blue zone lag behind. 
+* The ones near the walls, in the slow blue zone lag behind (no-slip condition ). 
      *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.*
 
           
 ### Three vessels, three physics regimes
 The same nanobot passing through three different vessel environments — a small artery, a capillary, and an artificially exaggerated Brownian scenario (built purely for visual purposes, to make the jitter visible at a scale it wouldn't normally reach) shows the scale-dependence more visibly.
 
-<img width="1589" height="1190" alt="ANIMATED COMPARISON in capillaries, arteries and exag brownian" src="https://github.com/user-attachments/assets/90f01b58-156d-4a71-8a2b-82c38b70892d" />
-
 <figure>
+  <img src="/assets/images/ANIMATED COMPARISON in caps, arteis and exag brownian.png" alt="Nanobot trajectory in each vessel type"> 
   <figcaption>
     <strong>Fig 9: Three Scenarios Side by Side (Static).</strong><br>
     <em>Left column:</em> Nanobot trajectory in each vessel type. 
@@ -255,8 +251,14 @@ The same nanobot passing through three different vessel environments — a small
 
 Phase 1 established the fundamentals. The parabola is real. The drag is instantaneous. Brownian motion is scale-dependent and matters in capillaries. The swarm disperses with the flow.
 
-Phase 2 moves into three dimensions. Cylindrical vessels, Y-shaped bifurcations, the question of how a nanobot chooses which branch to take. The answer, at least in biology, involves chemical gradients. Every disease, every tumour, every site of infection has a molecular signature — a concentration field that diffuses outward from the source. How to model that will be a topic of discussion in a coming post.
+Phase 2 moves into three dimensions (**3D**). Cylindrical vessels, Y-shaped bifurcations, the question of how a nanobot chooses which branch to take. The answer, at least in biology, involves chemical gradients. Every disease, every tumour, every site of infection has a molecular signature — a concentration field that diffuses outward from the source. How to model that will be a topic of discussion in a coming post.
 
 
-
-
+## Sources & Further Reading
+* Venugopalan et al. — Conformal Cytocompatible Ferrite Coatings Facilitate the Realization of a Nanovoyager in Human Blood. Indian Institute of Science, Bangalore.
+* Chen, Fan, Fischer, Ghosh et al. — A Roadmap for Next-Generation Nanomotors.
+* Guo, Liu et al. — Biofriendly Micro/Nanomotors Operating on Biocatalysis: From Natural to Biological Environments.
+* Li, Peng et al. — Medical Micro- and Nanomotors in the Body.
+* Challita, Rohilla, Bhamla — Fluid Ejections in Nature. Annual Review of Chemical and Biomolecular Engineering.
+* Sutton & Barto — Reinforcement Learning: An Introduction (for simulation and control framework).
+* LeCun — A Path Towards Autonomous Machine Intelligence (world model architecture).
