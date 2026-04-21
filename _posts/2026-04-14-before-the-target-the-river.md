@@ -57,12 +57,13 @@ So, how do we know which regime we're in? The Reynolds number
 </figure>
 
 
+
 <figure>
   <img src="/assets/images/reynolds number.png" alt="Reynolds number formula"> 
   <figcaption>Fig 2: The Reynolds formula.</figcaption>
 </figure>
                         
-  *For blood, fluid density  ~1060 kg/m³, and dynamic viscosity ~0.003 Pa·s*
+   *For blood, fluid density  ~1060 kg/m³, and dynamic viscosity ~0.003 Pa·s*
 
 > **Note:**
 * **Re** < 2300 → Laminar
