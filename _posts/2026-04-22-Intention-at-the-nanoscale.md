@@ -37,7 +37,7 @@ But not every nanobot in the system has a, for lack of a better word- a destinat
 
 Building this navigation logic from the ground up, let's understand what it means to swim at this scale.
 
-### SWIM, SWIM
+### Swim, Swim...
 
 Knowing where to go is one thing. Getting there is another. And at the nanoscale, the question is not **"how does the nanobot swim?"** It becomes **"what kind of motion is even physically possible here?"** 
 
@@ -103,11 +103,9 @@ This is what I mean when I say **biological ingenuity paired with computational 
 The chemical gradient field the nanobot navigates is modelled using **a simplified diffusion- decay profile.** When a molecule diffuses while simultaneously being removed, its steady‑state concentration falls off exponentially. This behavior is captured by the radial exponential‑decay solution to the diffusion–decay equation:
 ![diffusion‑decay equation.png](/assets/images/diffusion‑decay equation.png)
 
-
 Solving this differential equation for a 3D space, gives us the exponential decay function where C is given as:
 
 ![radial exponential decay solution](/assets/images/radial exponential decay solution.png)
-
 
 Where:
 
@@ -179,7 +177,7 @@ Here we introduce three mission types. There are more, but that will be somethin
 <figure>
   <img src="/assets/images/Nav_three missions.png" alt="Adaptive Multi-Strategy Navigation: Three Missions">
   <figcaption>
-    <strong>Fig 5 — Adaptive Multi-Strategy Navigation: Three Missions</strong><br>
+    <strong>Fig 5: Adaptive Multi-Strategy Navigation: Three Missions</strong><br>
     Three rows, three missions
     <em>Left column:</em> trajectory
     <em>Middle:</em> distance to target over time
@@ -198,13 +196,12 @@ The energy budget in that right column is the first signal of a constraint that 
 
 
 ---
-*P.S: Here, we mostly spoke about things from a 2D angle — a flat cross-section of a single vessel, target coordinates specified in advance, one nanobot at a time (mostly). However, as we know, the body is none of these things. The geometry is three-dimensional. Vessels branch. And there can't be just one nanobot , for therapy to happen effetcively. There has to be some great number (**Swarm** — heading into the thousands), and they have to coordinate on task, and recruit each other toward a shared goal or a discovered target..  **Intelligent emergent Nanobots**. These will all be in subsequent issues.*
+*P.S:* Here, we mostly spoke about things from a 2D angle — a flat cross-section of a single vessel, target coordinates specified in advance, one nanobot at a time (mostly). However, as we know, the body is none of these things. The geometry is three-dimensional. Vessels branch. And there can't be just one nanobot , for therapy to happen effetcively. There has to be some great number (**Swarm** — heading into the thousands), and they have to coordinate on task, and recruit each other toward a shared goal or a discovered target..  **Intelligent emergent Nanobots**. These will all be in subsequent issues.
 
 
 
 
-
-
+---
 ## Sources & Further Reading
 * https://chemotaxis.biology.utah.edu/projects/ecolichemotaxis/ecolichemotaxis.html
 * Wilson (1971) The Insect Societies.
