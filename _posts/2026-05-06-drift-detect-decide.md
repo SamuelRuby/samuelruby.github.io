@@ -94,7 +94,7 @@ In the simulation below, branch selection is implemented using a **two-stage gra
 </figure>
 
 
-### The swarm — Independent Agents with Emergent Behaviour
+### The Swarm: Independent Agents with Emergent Behaviour
 
 A single nanobot navigating a bifurcation? Easy! Fifteen (15) nanobots doing it simultaneously and independently, without a central controller telling any of them what to do? Now, we're getting somewhere interesting.
 
@@ -140,7 +140,8 @@ Recent work in the field has begun to demonstrate this experimentally. Researche
 
 In the first layer of this architecture: We have three roles, each with distinct physical parameters and behavioural logic.
 ---------------
-** Should be a table--maybe
+
+
  **SPECIFICATION TABLE**
  | Attribute | Scouts (30%) | Workers (50%) | Guards (20%) |
 | :--- | :--- | :--- | :--- |
@@ -171,21 +172,23 @@ The energy budget differences reflect mission duration. Scouts are short-lived. 
 The interaction between these roles produces behaviour that none of them could produce alone. Together they create a system that is simultaneously aggressive in finding the target, conservative in treating it, and robust against biological counter-measures. This is a direct computational implementation of the same architectural principle that governs biological immune function.
 
 <figure>
-  <img src="/assets/images/Three-Patient Swarm Comparison_.png" alt="Phase 1: Three-Patient Swarm Comparison">
+  <img src="/assets/images/three-patient-comparison.png" alt="Phase 1: Three-Patient Swarm Comparison">
   <figcaption>
-    <strong>Fig 4:Phase 1--> Three-Patient Swarm Comparison.</strong><br>
-    <em>Patient A: carotid stenosis. Patient B: celiac trunk lesion. Patient C: coronary stenosis.
-      Each column shows the same five analyses: vessel trajectories colour-coded by role (blue = worker, green = scout, red = guard), swarm state population over time, energy per nanobot by role, beacon timeline, and final composition pie chart.
+    <strong>Fig 4: Phase 1 — Three-Patient Swarm Comparison.</strong><br>
+    <em>Patient A:</em> carotid stenosis. <em>Patient B:</em> celiac trunk lesion. <em>Patient C:</em> coronary stenosis.
+    Each column shows the same five analyses: vessel trajectories colour-coded by role (blue = worker, green = scout, red = guard), swarm state population over time, energy per nanobot by role, beacon timeline, and final composition pie chart.
     The population dynamics are particularly revealing. In all three scenarios, the acute phase begins with 100% workers. As scouts reach the target and the problem is confirmed, workers converge and treat. 
-      Post-treatment, the composition shifts: some workers degrade (controlled apoptosis, the process discussed in the safety architecture), while a subset differentiate into the sentinel configuration — scouts 
-      transitioning to passive patrol mode, workers standing by in reserve, guards maintaining immune interface.
-     The energy curves show role-differentiated depletion: scouts burn energy early and fast (high exploration activity), workers burn steadily during treatment, guards sustain low-level consumption throughout. 
-      The pie charts at the bottom show final swarm composition — the ratio of anchored (treating), sentinel-passive (monitoring), standby (reserve), and degraded (mission-complete) nanobots. 
-      Patient C, the coronary stenosis, shows the highest degradation rate, reflecting the shorter treatment duration and faster target clearance in that geometry.
+    Post-treatment, the composition shifts: some workers degrade (controlled apoptosis, the process discussed in the safety architecture), while a subset differentiate into the sentinel configuration — scouts transitioning to passive patrol mode,
+            workers standing by in reserve, guards maintaining immune interface.
+    The energy curves show role-differentiated depletion: scouts burn energy early and fast (high exploration activity), workers burn steadily during treatment, guards sustain low-level consumption throughout. 
+    The pie charts at the bottom show final swarm composition — the ratio of anchored (treating), sentinel-passive (monitoring), standby (reserve), and degraded (mission-complete) nanobots. 
+    Patient C, the coronary stenosis, shows the highest degradation rate, reflecting the shorter treatment duration and faster target clearance in that geometry.
   </figcaption>
 </figure>
 
-## The Deployment Lifecycle — From Acute Response to Long-term Sentinel
+
+
+### The Deployment Lifecycle — From Acute Response to Long-term Sentinel
 The three-role architecture above describes the composition of the swarm during active treatment. But treatment has phases, and the optimal swarm composition changes across them.
 
 * Phase one: Acute phase. A problem has been identified — a tumour, an infection, a thrombosis. The immediate goal is resolution. The swarm is deployed at 100% workers, maximum payload, aggressive treatment. Scouts are injected simultaneously to confirm target location and guide worker convergence. The acute phase ends when the target is cleared — target health in the simulation drops to zero, which triggers a state transition in every nanobot.
