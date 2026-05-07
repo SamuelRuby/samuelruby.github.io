@@ -169,7 +169,7 @@ Simulation confirms this. A single nanobot placed slightly off-centre, given zer
   </figcaption>
 </figure>
 
-### BROWNIAN MOTION
+### Brownian Motion
 Fluid molecules are never still. At any temperature above absolute zero, they are constantly jiggling — vibrating, colliding, bouncing off each other and off anything else in their path. A nanobot in blood will certainly be surrounded by billions of these collisions every microsecond, with most of them canceling out. The net result is then a random, persistent displacement — a jitter superimposed on whatever the flow is doing. At nanoscale, brownian motion isn't negligible and is actually one of the dominant forces
 
 <figure>
@@ -232,7 +232,9 @@ Releasing 20 nanobots simultaneously, placed at different radial positions acros
 **Technical Breakdown**
 * The ones near the centre, in the fast red zone race ahead.
 * The ones near the walls, in the slow blue zone lag behind (no-slip condition ). 
-     *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together.                       Collective behaviour has to be designed for separation, not assumed proximity.*
+
+
+  *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together. Collective behaviour has to be designed for separation, not assumed proximity.*
 
           
 ### Three vessels, three physics regimes
