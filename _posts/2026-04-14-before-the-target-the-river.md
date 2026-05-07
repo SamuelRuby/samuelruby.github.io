@@ -190,7 +190,8 @@ The 1D probability of a particle to make a displacement x in a certain drection,
 ### Brownian Motion — Einstein-Smoluchowski
 
 The diffusion coefficient **D** is defined by the Stokes-Einstein equation:
-    > **k_B·T / 6πμr**
+    
+     **k_B·T / 6πμr**
 
 Where:
 * **D:** diffusion coefficient (m²/s)
