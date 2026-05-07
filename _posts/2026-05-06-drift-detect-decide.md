@@ -171,8 +171,9 @@ The energy budget differences reflect mission duration. Scouts are short-lived. 
 
 The interaction between these roles produces behaviour that none of them could produce alone. Together they create a system that is simultaneously aggressive in finding the target, conservative in treating it, and robust against biological counter-measures. This is a direct computational implementation of the same architectural principle that governs biological immune function.
 
+
 <figure>
-  <img src="/assets/images/three-patient-comparison.png" alt="Phase 1: Three-Patient Swarm Comparison">
+<img src="/assets/images/Three-Patient Swarm Comparison_.png" alt="Phase 1: Three-Patient Swarm Comparison">
   <figcaption>
     <strong>Fig 4: Phase 1 — Three-Patient Swarm Comparison.</strong><br>
     <em>Patient A:</em> carotid stenosis. <em>Patient B:</em> celiac trunk lesion. <em>Patient C:</em> coronary stenosis.
