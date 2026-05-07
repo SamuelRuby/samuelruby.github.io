@@ -142,7 +142,9 @@ so:
 
 **SO** it goes without saying that Nanobot has to match velocity of fluid
 
-    "Relaxation time τ (time it takes for the nanobot to match the velocity of the surrounding fluid after being placed in it)"
+    "Relaxation time τ (time it takes for the nanobot to 
+    match the velocity of the surrounding fluid after 
+    being placed in it)"
                           τ = m/6πμr
                           
 * For a nanobot with a radius r of 100nm, and with a fluid the density of water, τ ≈ 2.2 nanoseconds. 
