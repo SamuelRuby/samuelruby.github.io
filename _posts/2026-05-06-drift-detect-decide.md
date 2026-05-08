@@ -146,25 +146,79 @@ In the first layer of this architecture, we have three roles, each with distinct
 
 ### SPECIFICATION TABLE
 
-| Attribute | Scouts (30%) | Workers (50%) | Guards (20%) |
-|:---|:---|:---|:---|
-| **Max Thrust** | 15 fN | 10 fN | 12 fN |
-| **Payload** | 0.5× | 2.0× | Minimal |
-| **Energy** | 3000 units | 5000 units | 8000 units |
-| **Mode** | Patrol / Aggressive | Standby / Proceed | Escort / Patrol |
-| **Special** | 1.5× Exploration gain | High drug capacity | Immune camouflage (PEG) |
+<table style="width:100%; border-collapse: collapse; text-align: left;">
+  <thead>
+    <tr style="border-bottom: 2px solid #000;">
+      <th style="padding: 10px;">Attribute</th>
+      <th style="padding: 10px;">Scouts (30%)</th>
+      <th style="padding: 10px;">Workers (50%)</th>
+      <th style="padding: 10px;">Guards (20%)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Max Thrust</strong></td>
+      <td style="padding: 10px;">15 fN</td>
+      <td style="padding: 10px;">10 fN</td>
+      <td style="padding: 10px;">12 fN</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Payload</strong></td>
+      <td style="padding: 10px;">0.5×</td>
+      <td style="padding: 10px;">2.0×</td>
+      <td style="padding: 10px;">Minimal</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Energy</strong></td>
+      <td style="padding: 10px;">3000 units</td>
+      <td style="padding: 10px;">5000 units</td>
+      <td style="padding: 10px;">8000 units</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Mode</strong></td>
+      <td style="padding: 10px;">Patrol / Aggressive</td>
+      <td style="padding: 10px;">Standby / Proceed</td>
+      <td style="padding: 10px;">Escort / Patrol</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px;"><strong>Special</strong></td>
+      <td style="padding: 10px;">1.5× Exploration gain</td>
+      <td style="padding: 10px;">High drug capacity</td>
+      <td style="padding: 10px;">Immune camouflage (PEG)</td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### OPERATION ROLES TABLE
 
-| Unit | Primary Role |
-|:---|:---|
-| **Scouts** | Find target first. Take risks. Report and recruit. |
-| **Workers** | Deliver treatment. Execute efficiently and safely once beacon is detected. |
-| **Guards** | Protect the swarm. |
+<table style="width:100%; border-collapse: collapse; text-align: left; margin-top: 20px;">
+  <thead>
+    <tr style="border-bottom: 2px solid #000;">
+      <th style="padding: 10px;">Unit</th>
+      <th style="padding: 10px;">Primary Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Scouts</strong></td>
+      <td style="padding: 10px;">Find target first. Take risks. Report and recruit.</td>
+    </tr>
+    <tr style="border-bottom: 1px solid #ddd;">
+      <td style="padding: 10px;"><strong>Workers</strong></td>
+      <td style="padding: 10px;">Deliver treatment. Execute efficiently and safely once beacon is detected.</td>
+    </tr>
+    <tr>
+      <td style="padding: 10px;"><strong>Guards</strong></td>
+      <td style="padding: 10px;">Protect the swarm. Intercept immune cells.</td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 
 The design logic behind each role follows directly from the physical demands of each function.
-
 **Scouts** need speed because their job is coverage — sampling as much of the vascular network as possible in the shortest time to find a target that may be below imaging resolution or in a location not anticipated by pre-injection imaging. High thrust and aggressive exploration gain serve this. They do not need to carry treatment payload, so their payload capacity is minimal, freeing mass and volume for sensors and speed. Their energy budget is deliberately short: scouts are expendable. They find the target, fire the beacon, and either degrade or a secret third thing.
 
 **Workers** are the opposite, they carry the treatment. Double payload capacity means double drug concentration at the target site, or the same concentration with half the number of workers required. But workers can't explore aggressively, cuz exploration burns energy before the treatment site is reached, and aggressive navigation near sensitive tissues increases the risk of off-target action. That means, workers should be conservative by design: they wait for the scout beacon before committing to a route, then follow the confirmed path efficiently. The scout takes the risk. The worker delivers the result.
