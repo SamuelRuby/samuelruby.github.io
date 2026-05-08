@@ -27,6 +27,7 @@ In 3D, position is described by *(x, y, z)* in Cartesian coordinates, or equival
 This means the 3D velocity profile takes the same parabolic form as in 2D, but now extended into the full cross-section, like so:
 
           v(r) = v_max × (1 − r²/R²)
+      $$v(r) = v_{max} \left(1 - \frac{r^2}{R^2}\right)$$
 
 Where:
 * **r:**  √(y² + z²)
