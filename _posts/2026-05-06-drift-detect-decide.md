@@ -210,7 +210,7 @@ In the first layer of this architecture, we have three roles, each with distinct
     </tr>
     <tr>
       <td style="padding: 10px;"><strong>Guards</strong></td>
-      <td style="padding: 10px;">Protect the swarm. Intercept immune cells.</td>
+      <td style="padding: 10px;">Protect the swarm.</td>
     </tr>
   </tbody>
 </table>
