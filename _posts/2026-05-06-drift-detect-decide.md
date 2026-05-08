@@ -160,7 +160,7 @@ In the first layer of this architecture, we have three roles, each with distinct
 |:---|:---|
 | **Scouts** | Find target first. Take risks. Report and recruit. |
 | **Workers** | Deliver treatment. Execute efficiently and safely once beacon is detected. |
-| **Guards** | Protect the swarm. Intercept immune cells. |
+| **Guards** | Protect the swarm. |
 
 
 The design logic behind each role follows directly from the physical demands of each function.
