@@ -34,8 +34,8 @@ Where:
 
 Here, the velocity is highest at the centerline and reaches zero at the vessel wall. The previous 2D parabola is now a paraboloid of revolution — a bowl-like shape extending symmetrically in all directions from the central axis.
 
-Also, 
-  **Brownian motion changes in 3D**. In 2D, thermal kicks were confined to the x-y plane. In 3D, they act in all three directions simultaneously. The random displacement per timestep in each dimension remains:
+ 
+**Brownian motion changes in 3D**. In 2D, thermal kicks were confined to the x-y plane. In 3D, they act in all three directions simultaneously. The random displacement per timestep in each dimension remains:
 
           Δx_random ~ N(0, √(2DΔt))
 
