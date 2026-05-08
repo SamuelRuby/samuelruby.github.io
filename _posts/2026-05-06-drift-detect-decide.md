@@ -62,21 +62,25 @@ A straight cylindrical vessel is a tractable problem. However, the vasculature o
 This is, structurally, one of the harder problems in nanorobotics navigation. At a Y-shaped bifurcation, the nanobot has two options. Without intelligence, it is carried by whichever branch has higher flow — which is not necessarily the branch containing the target. With intelligence, it reads the local chemical gradient and steers towards whichever branch shows higher concentration. But the gradient at the bifurcation point may be weak, noisy, or ambiguous, especially if the target is far downstream.
 
 The geometry of the bifurcation itself is governed by **Murray's Law**, first derived by *Cecil Murray in 1926*, describing how vessels branch to minimise the energy cost of blood transport. 
-    Murray's Law for N Vessel Branching
+
+Murray's Law for *N* Vessel Branching
     ![/Murray's Branching Law](/assets/images/Murray_Branching_Law.png)
    
-    where:
-    *r₀* — parent vessel radius
-    *r₁, r₂* — daughter vessel radii
+**Where**:
+*r₀* — parent vessel radius
+*r₁, r₂* — daughter vessel radii
     
  For a parent vessel splitting into multiple daughter vessels, it'll be given as this:   
 
   ![Flow Distribution Daughters](/assets/images/FlowDistribution_daughters.png)
 
- Each branch receives equal share of volumetric flow
+Each branch receives equal share of volumetric flow
 
+Murray's Law is a physical optimisation that the vascular system has converged on, minimising both the metabolic cost of maintaining blood volume and the viscous resistance to flow. The cube relationship between radii emerges from the balance between two competing costs: 
+* the energy to pump viscous fluid (which favours wider vessels) and
+* the metabolic cost of maintaining vascular tissue (which favours narrower vessels).
 
-Murray's Law is a physical optimisation that the vascular system has converged on, minimising both the metabolic cost of maintaining blood volume and the viscous resistance to flow. The cube relationship between radii emerges from the balance between two competing costs: **the energy to pump viscous fluid (which favours wider vessels)** and **the metabolic cost of maintaining vascular tissue (which favours narrower vessels)**. The optimal branching exponent of 3 falls directly out of Poiseuille's law and the assumption of constant wall shear stress across the network.
+The optimal branching exponent of 3 falls directly out of Poiseuille's law and the assumption of constant wall shear stress across the network.
 
 That means, for a nanobot navigating this network, Murray's Law has a practical implication in that: at each bifurcation, flow splits approximately equally between daughter branches. Without active steering, a nanobot has roughly 50% probability of entering the correct branch at each junction. In a network with multiple branching levels, that probability compounds — a nanobot navigating four bifurcations without gradient guidance has only a 6.25% chance of reaching the correct terminal vessel by chance alone. This is why **chemotaxis-guided branch selection** is a necessity.
 
@@ -85,7 +89,7 @@ In the simulation below, branch selection is implemented using a **two-stage gra
 <figure>
   <img src="/assets/images/Y-bifurcation geometry.png" alt="Y-Bifurcation: Geometry, Branch Selection, Vessel Occupancy">
   <figcaption>
-    <strong>Fig 2:Y-Bifurcation: Geometry, Branch Selection, Vessel Occupancy.</strong><br>
+    <strong>Fig 2: Y-Bifurcation: Geometry, Branch Selection, Vessel Occupancy.</strong><br>
     <em>Left:</em> 3D rendering of the Y-bifurcation geometry. 
     Parent vessel enters from the left; two daughter vessels diverge at ±30°. The nanobot trajectory (purple) navigates through the parent and selects Branch 1, the branch containing the target
     <em>Centre:</em> Top-view showing branch selection, where target is not at Branch 2 (red).
@@ -100,7 +104,7 @@ A single nanobot navigating a bifurcation? Easy! Fifteen (15) nanobots doing it 
 
 A centralised system — one where a controller outside the body directs each nanobot individually — faces fundamental physical constraints. At the nanoscale, inside living tissue, communication bandwidth is limited, signal attenuation is severe, and the latency between sensing and commanding is clinically unacceptable. More fundamentally, a centralised system has a single point of failure. If the controller is disrupted, the entire swarm becomes inert. This is the core design principle of **swarm nanorobotics.**
 
-A decentralised swarm has none of these weaknesses. Each nanobot makes its own decisions based on local information — what it can sense at its current position. No single nanobot knows the global state of the system nor do they need to. The collective behaviour — convergence on the target, redundancy, robustness to individual failure — emerges from the interactions of simple local rules applied in parallel across many agents. This is the same principle that governs ant colonies, T-cell responses, and cortical neural networks. It is, arguably, the most robust architecture known for complex adaptive behaviour in uncertain environments.
+A decentralised swarm has none of these weaknesses. Each nanobot makes its own decisions based on local information: what it can sense at its current position. No single nanobot knows the global state of the system nor do they need to. The collective behaviour — convergence on the target, redundancy, robustness to individual failure — emerges from the interactions of simple local rules applied in parallel across many agents. This is the same principle that governs ant colonies, T-cell responses, and cortical neural networks. It is, arguably, the most robust architecture known for complex adaptive behaviour in uncertain environments.
 
 In the simulation below, 15 nanobots are released simultaneously from the vessel entrance. They navigate independently, with each of them following the gradient using the same algorithm. No communication between them — except for one mechanism, introduced deliberately: **the beacon.**
 
@@ -121,7 +125,7 @@ When any one of them reaches the target, it releases a chemical recruitment sign
 
 The 73.3% success rate validates the algorithm: gradient following plus beacon recruitment, operating without central control, produces reliable convergence on a target in a branching 3D vascular environment.
 
-The 26.7% failure rate is not a bug to be fixed. In clinical deployment, one would send thousands, perhaps millions of these. And statistical failure at the individual level is irrelevant if the collective success rate produces sufficient treatment at the target site. What does it matter if some don't go in the right branch? Look at it from this angle. In initial circulation, the distribution of nanobots in branches is stochastic, and so they're in different branches, before the beacon is active — before any nanobot had reached the target to signal the others. If a nanobot enters the wrong branch before the beacon is activated, it has no information to correct its trajectory. It is effectively lost to the 'wrong' part of the network. So, here we identify a specific vulnerability: early-arriving nanobots in the wrong branch have no information to correct their trajectory. In the next phase, scouts — a specialized nanoroobt caste, address this directly.
+The 26.7% failure rate is not a bug to be fixed. In clinical deployment, one would send thousands, perhaps millions of these. And statistical failure at the individual level is irrelevant if the collective success rate produces sufficient treatment at the target site. What does it matter if some don't go in the right branch? Look at it from this angle. In initial circulation, the distribution of nanobots in branches is stochastic, and so they're in different branches, before the beacon is active, i.e, before any nanobot reaches the target to signal the others. If a nanobot enters the wrong branch before the beacon is activated, it has no information to correct its trajectory. It is effectively 'lost' to the 'wrong' part of the network. So, here we identify a specific vulnerability: early-arriving nanobots in the wrong branch have no information to correct their trajectory. In the next phase, **scouts** — a specialized nanoroobt caste, address this directly.
 
 ### Division of Labour
 Every nanobot in the simulation so far has been identical. Same thrust, same payload capacity, same energy budget, same behavioural parameters. But this is wrong, especially as a design philosophy. 
@@ -134,13 +138,11 @@ How do we solve this? Let's look at Biology again — *which btw, solved this ap
 
 Not one single cell type could have done all of this. The specificity, efficiency, and robustness of the immune response is a direct consequence of division of labour — a specialisation that allows each cell type to be deeply optimised for its particular role rather than broadly adequate for all of them.
 
-The same principle applies here. A uniform nanobot swarm just doesn't work. A heterogeneous swarm with role-specific design - now we're rolling....
+The same principle applies here. A uniform nanobot swarm just doesn't work. A heterogeneous swarm with role-specific design,.... now we're rolling....
 
 Recent work in the field has begun to demonstrate this experimentally. Researchers at multiple institutions have shown that heterogeneous microswarms — where different agents carry different functional modules — can execute complex sequential tasks that homogeneous swarms cannot: one subpopulation sensing and mapping, another navigating using the map, another delivering payload at the identified site. The Sensing-Navigating-CargoDropping sequence requires agents specialised for each step, because the physical requirements of each step are in direct tension with the others. A nanobot optimised for sensing (low payload, high sensitivity) is not optimised for drug delivery (high payload capacity, robust anchoring). 
 
-In the first layer of this architecture: We have three roles, each with distinct physical parameters and behavioural logic.
----------------
-
+In the first layer of this architecture, we have three roles, each with distinct physical parameters and behavioural logic.
 
  **SPECIFICATION TABLE**
  | Attribute | Scouts (30%) | Workers (50%) | Guards (20%) |
