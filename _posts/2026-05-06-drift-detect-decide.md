@@ -144,8 +144,8 @@ Recent work in the field has begun to demonstrate this experimentally. Researche
 
 In the first layer of this architecture, we have three roles, each with distinct physical parameters and behavioural logic.
 
- **SPECIFICATION TABLE**
- 
+### SPECIFICATION TABLE 
+
 | Attribute | Scouts (30%) | Workers (50%) | Guards (20%) |
 | :--- | :--- | :--- | :--- |
 | **Max Thrust** | 15 fN | 10 fN | 12 fN |
@@ -154,13 +154,14 @@ In the first layer of this architecture, we have three roles, each with distinct
 | **Mode** | Patrol / Aggressive | Standby / Proceed | Escort / Patrol |
 | **Special** | 1.5× Exploration gain | High drug capacity | Immune camouflage (PEG) |
 
- **OPERATION ROLES TABLE**
- 
+### OPERATION ROLES TABLE
+
 | Unit | Primary Role |
 | :--- | :--- |
 | **Scouts** | Find target first. Take risks. Report and recruit. |
 | **Workers** | Deliver treatment. Execute efficiently and safely once beacon is detected. |
 | **Guards** | Protect the swarm. Intercept immune cells. |
+
 
 The design logic behind each role follows directly from the physical demands of each function.
 
