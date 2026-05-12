@@ -27,7 +27,8 @@ No single physical design optimises for all of these simultaneously. The paramet
 The immune system's power comes not from any individual cell but from the orchestration of specialists. The immune system has different cell types, with each of them deeply optimised for different phase of the immune response. It does not send one cell type to do everything. It sends neutrophils first — fast, aggressive, expendable, arriving within minutes. Then macrophages — slower, longer-lived, capable of antigen presentation and tissue cleanup. Then T-cells — highly specific, devastating when activated, with memory that persists for decades. Then B-cells — remote manufacturing, producing molecular weapons targeted to precise antigens. Then natural killer cells — continuously patrolling, not waiting for activation signals, destroying cells that display the wrong surface markers. Each cell type is deeply optimised for one phase of the response. Together they produce something that none of them could produce alone.
 
 Here, we present the nanobot swarm as the following specialised states
-  ![/Nanobot Swarm Specialised States](/assets/images/diff_event.png)
+    ![/Nanobot Swarm Specialised States](/assets/images/diff_event.png)
+   
    
 
 Twelve distinct states. Three primary castes. And between them, a set of transition conditions that determine when a nanobot moves from one state to the next. 
@@ -41,7 +42,8 @@ Differentiation — the DIFF event — in the simulation happens at a specific m
 The trigger condition is a swarm-level quorum. Not any individual nanobot's assessment, but the aggregate signal across the population. When the rolling mean of signal strength readings across all active nanobots exceeds a threshold — and the rate of change of that signal is positive (strengthening, not weakening) — the system records a DIFF timestamp and begins role assignment.
 
 This is precisely analogous to quorum sensing in bacterial communities. Bacteria release autoinducer molecules into the environment. Each individual bacterium measures local autoinducer concentration. When the concentration crosses a threshold — indicating that the population has reached sufficient density or that enough bacteria are present to make collective action viable — the entire population switches behaviour simultaneously. Biofilm formation. Virulence factor expression. Bioluminescence. you name it. The individual cell does not decide. Decison lies with the collective.
- ![/DIFF Trigger Condition](/assets/images/diff_threshold.png)
+    ![/DIFF Trigger Condition](/assets/images/diff_threshold.png)
+   
    
 
 The 'DIFF' threshold operates the same way. No single nanobot initiates differentiation. The swarm reaches it together.
@@ -72,8 +74,7 @@ The **beacon channel** is where nanobot-to-nanobot communication begins. When th
 The **threat channel** is the most abstract. It is a computed aggregate. At DIFF time, the system evaluates the rolling signal log across all nanobots, computes threat scores per target, and uses those scores to partition the population. This is the swarm's version of a decision meeting — the one moment where global information is integrated and acted on. It happens once. After that, each sub-swarm operates independently.
 
 These three channels — environmental gradient, beacon, threat score — are not equivalent to a communication infrastructure. There is no radio, no electromagnetic signal, no bandwidth. They are chemical. A chemical communication system is biocompatible, unspoofable by external attackers, and physically constrained to the local environment where the nanobots operate.
-
- ![/SWARM COMMNUNICATION CHANNELS](/assets/images/swarm_comm_channels.png)
+    ![/SWARM COMMNUNICATION CHANNELS](/assets/images/swarm_comm_channels.png)
 
 The swarm, in this architecture, is more than the sum of its parts. A single nanobot reading a chemical gradient can follow it to a source. A swarm of nanobots reading the same gradient produces spatial coverage — some exploring branch A, some branch B, some already at the target and beaconing. The collective samples the entire local environment simultaneously. Individual nanobots fail, drift, get cleared by immune cells. The collective does not fail, because redundancy is structural. The intelligence, as I hope you deduce, is in the architecture, not in just 1 individual agent.
 
@@ -109,9 +110,9 @@ But not all terminations are controlled. There are two conditions that trigger n
  ![/SWARM TERMINATION CONDITIONS](/assets/images/apoptosis_pathway.png)
 
 In the simulation that we ran, the brown “Degrading” wave rises sharply beginning around t≈100 s as the green “Sentinel Patrol” and treatment-associated populations collapse following treatment completion. Over the next ~30 seconds, the swarm transitions through controlled degradation rather than abrupt disappearance. By ~135–145 s, most nanobots have completed degradation, leaving only a thin persistent sentinel population and memory cells visible through t=180s.  The system cleaned itself up. The patient's body did not see an explosion of foreign material. It saw a gradual influx of biocompatible breakdown products, spread over time, well within the clearance capacity of normal macrophage activity.
+    ![/SWARM LIFECYCLE](/assets/images/swarm_lifecycle.png)
 
- ![/SWARM LIFECYCLE](/assets/images/swarm_lifecycle.png)
-
+    
 ### METASTASIS VS SYNCHRONOUS PRIMARIES
 Two scenarios stress the architecture in different ways and are worth addressing here, especially cuz they represent the most clinically important situations where current medicine fails.
 
@@ -126,7 +127,7 @@ The sentinel sweep function **"sweep: micro-met patrol"** state visible in the l
 
 
 The liver cleared at 19 seconds post-engagement, the colon at 22 seconds. Two independent disease sites, treated concurrently, by an autonomous distributed system with no central controller.
-![/Synchronous primaries](/assets/images/lynch_perOrgandynamics.png)
+    ![/Synchronous Primaries](/assets/images/lynch_perOrgandynamics.png)
 
 
 So far we have demonstrated that if a nanobot with these physical capabilities can be manufactured, the swarm intelligence layer required to coordinate its behavior is already coherent, simulatable, and effective at a clinical scale. We already account for real anatomical geometry and vascular physics, Murray's Law compliance for vessel branching and Stochastic (Brownian) noise, real  checking and molecular signature classification. 
