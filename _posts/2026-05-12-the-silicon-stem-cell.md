@@ -1,5 +1,5 @@
 ---
-title: The Silicon Stem Cell: Differentiation, Memory, Emergence
+title: "The Silicon Stem Cell: Differentiation, Memory, Emergence"
 date: 2026-05-12
 layout: post
 ---
@@ -30,7 +30,6 @@ Here, we present the nanobot swarm as the following specialised states
     ![/Nanobot Swarm Specialised States](/assets/images/diff_event.png)
    
    
-
 Twelve distinct states. Three primary castes. And between them, a set of transition conditions that determine when a nanobot moves from one state to the next. 
 I should tell you that these states were actually implemented in our Phase 3 simulation, running across 250 nanobots simultaneously over a 180-second deployment window, in a real anatomical vascular network representing a Lynch Syndrome patient with simultaneous colon and liver primaries.
 
