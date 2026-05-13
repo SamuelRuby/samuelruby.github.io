@@ -284,9 +284,9 @@ This weighting reflects a fundamental truth in precision oncology: a large, esta
 
 ###  What these results mean — and what they don't
 **The Demonstrated***: We have established a computational framework for autonomous, multi-site cancer treatment that produces clinically coherent outcomes across three levels of complexity:
-* 1. H-Tree Phase: 200 nanobots successfully localized and cleared two unknown disease sites in 14.55 seconds without pre-loaded coordinates.
-* 2. Phase 3.1 (Anatomical): 250 nanobots navigated a realistic abdominal vascular network, reaching simultaneous targets within 2 seconds of injection and executing a full treatment-sentinel lifecycle.
-* 3. Phase 3.2 (Discrimination): The system successfully distinguished between two molecularly distinct cancers (cosine similarity 0.501). It partitioned the population into independent sub-swarms, allocated resources based on a dynamics-weighted threat score (65%/35%), and achieved 100% clearance with zero cross-contamination.
+* H-Tree Phase: 200 nanobots successfully localized and cleared two unknown disease sites in 14.55 seconds without pre-loaded coordinates.
+* Phase 3.1 (Anatomical): 250 nanobots navigated a realistic abdominal vascular network, reaching simultaneous targets within 2 seconds of injection and executing a full treatment-sentinel lifecycle.
+* Phase 3.2 (Discrimination): The system successfully distinguished between two molecularly distinct cancers (cosine similarity 0.501). It partitioned the population into independent sub-swarms, allocated resources based on a dynamics-weighted threat score (65%/35%), and achieved 100% clearance with zero cross-contamination.
 Everything here has been computed from first principles: Poiseuille flow, Stokes drag, and Brownian noise at σ=36nm per millisecond. The geometry is anatomically calibrated, and the "intelligence"—from cosine similarity classifiers to Murray’s Law compliance checking—is built on rigorous, clinically motivated logic.
 
 
