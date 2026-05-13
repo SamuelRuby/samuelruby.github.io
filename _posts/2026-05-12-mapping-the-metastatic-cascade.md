@@ -72,7 +72,7 @@ In Phase III, we move from the idealized H-tree to true anatomical geometry. The
 
 The injection point is the **descending aorta**. From there, nanobots transit through the celiac trunk to reach hepatic circulation, or through the superior mesenteric artery (SMA) and inferior mesenteric artery (IMA) to reach the colonic network. Crucially, the model includes a **venous return loop**: agents that miss their target recirculate and attempt the passage again, with one complete circulation taking approximately 2.2 seconds at centerline velocity.
 
-![/Phase 3 Vascular Anatomical Geometry](/assets/images/phase3_abdominal_vasculatures.png)
+![/Phase 3 Vascular Anatomical Geometry](/assets/images/phase3_abdominal_vasculature.png)
 
 ![/Phase 3 Vessel Segment Statistics](/assets/images/vessel_segment_statistics.png)
 
