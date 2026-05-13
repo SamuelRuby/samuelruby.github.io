@@ -72,9 +72,9 @@ In Phase III, we move from the idealized H-tree to true anatomical geometry. The
 
 The injection point is the **descending aorta**. From there, nanobots transit through the celiac trunk to reach hepatic circulation, or through the superior mesenteric artery (SMA) and inferior mesenteric artery (IMA) to reach the colonic network. Crucially, the model includes a **venous return loop**: agents that miss their target recirculate and attempt the passage again, with one complete circulation taking approximately 2.2 seconds at centerline velocity.
 
-![/Phase 3 Vascular Anatomical Geometry](/assets/images/phase3_abdominal_vasculatures.jpg)
+![/Phase 3 Vascular Anatomical Geometry](/assets/images/phase3_abdominal_vasculatures.png)
 
-![/Phase 3 Vessel Segment Statistics](/assets/images/vessel_segment_statistics.jpg)
+![/Phase 3 Vessel Segment Statistics](/assets/images/vessel_segment_statistics.png)
 
 
 A critical engineering decision in this architecture is the **Multi-Scale Physics Gating**. In a system of this complexity, simulating every physical force at every scale would be computationally prohibitive and scientifically redundant. Instead, the simulation "unlocks" levels of physical detail only when they become relevant to the agent’s behavior.
@@ -114,7 +114,7 @@ At a timestep of **dt=5ms**, this simulation processed **9 million state updates
 
 The result is a system that doesn't just "find" a target; it manages a clinical lifecycle from the first second of injection through to the long-term sentinel phase.
 
-![/Lynch Simulation Table](/assets/images/simulation_tabel_lynch.jpg)
+![/Lynch Simulation Table](/assets/images/simulation_tabel_lynch.png)
 
 <figure>
   <img src="/assets/images/phase31_3D_vascular_network.jpg" alt="3D vascular network">
@@ -188,7 +188,7 @@ The nanobots distinguish between these targets using a molecular signature class
 
 The system calculates the **Cosine Similarity** between the detected vector and its targets.
 In this run, the similarity between the **HCC** and **CRC** vectors was **0.501**. With a classifier threshold set at **0.85**, the result was categorical: **DISTINCT**.
-![/Signature discrimination — the math](/assets/images/Signature_discrimination_math.jpg)
+![/Signature discrimination — the math](/assets/images/Signature_discrimination_math.png)
 
 
 Because the signatures are reliably separable, a nanobot detecting the liver signal cannot mistake it for the colon signal. This allows for **Autonomous Partitioning**:
@@ -200,7 +200,7 @@ We have now moved beyond "search and destroy" to a system capable of **simultane
 
 At the DIFF event (Differentiation), the swarm must decide how to partition its limited resources. Rather than a simple 50/50 split, the population uses a Threat Score computed per target to determine the optimal allocation ratio.
 The architecture employs a dual-factor formula to assess urgency:
-![/Threat score formula](/assets/images/Threat_score_formula.jpg)
+![/Threat score formula](/assets/images/Threat_score_formula.png)
 
 For this simulation, we set **α** = 0.35 and **β** = 0.65. This heavy weighting on the rate of change **β** is a deliberate encoding of clinical knowledge regarding Lynch Syndrome.
 
@@ -211,7 +211,7 @@ In MSI-H (Microsatellite Instability-High) tumors, progression is often aggressi
 Based on these specific dynamics, the population partitioned itself: **65%** assigned to Sub-swarm B (Liver) and **35%** to Sub-swarm A (Colon).
 
 This weighting reflects a fundamental truth in precision oncology: a large, established, but slow-growing signal may be less of an immediate priority than a small, rapidly intensifying signal from an early-stage but fast-progressing micrometastasis. By favoring **β**, the swarm automatically prioritizes *"the fire that is spreading"* over *"the fire that is merely large."This is the ultimate goal of the architecture, what we tried to do here, expressing clinical knowledge as algorithmic weights.
-![/Synchronous primaries Overview](/assets/images/Synchronous_primaries_Overview.jpg)
+![/Synchronous primaries Overview](/assets/images/Synchronous_primaries_Overview.png)
 
 
 <figure>
@@ -270,7 +270,7 @@ This weighting reflects a fundamental truth in precision oncology: a large, esta
 
 
 <figure>
-  <img src="/assets/images/ phase32_role_subswarm_evolution.jpg" alt="Role energy and threat-score resource allocation">
+  <img src="/assets/images/phase32_role_subswarm_evolution.jpg" alt="Role energy and threat-score resource allocation">
   <figcaption>
     <strong>Fig 10: Role energy and threat-score resource allocation .</strong><br>
     <em>Top:</em> Mean Energy per Role. DIFF marker visible at t≈20s. Worker energy (blue) depletes steadily as the treatment workload is sustained across both sub-swarms simultaneously. 
