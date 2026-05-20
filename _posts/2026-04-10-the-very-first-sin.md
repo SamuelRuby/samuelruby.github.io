@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Very First Sin"
+title: "1. The Very First Sin"
 date: 2026-04-10
 ---
 
