@@ -1,5 +1,5 @@
 ---
-title: "The Silicon Stem Cell: Differentiation, Memory, Emergence"
+title: "5. The Silicon Stem Cell: Differentiation, Memory, Emergence"
 date: 2026-05-11
 layout: post
 ---
