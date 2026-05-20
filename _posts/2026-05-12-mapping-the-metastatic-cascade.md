@@ -1,5 +1,5 @@
 ---
-title: "Lynch: Mapping the Metastatic Cascade"
+title: "6. Lynch: Mapping the Metastatic Cascade"
 date: 2026-05-12
 layout: post
 ---
