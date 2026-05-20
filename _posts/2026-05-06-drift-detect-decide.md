@@ -1,5 +1,5 @@
 ---
-title: Drift, Detect, Decide
+title: "4. Drift, Detect, Decide"
 date: 2026-05-06
 layout: post
 ---
