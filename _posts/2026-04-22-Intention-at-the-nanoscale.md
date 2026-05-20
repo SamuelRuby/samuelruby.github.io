@@ -1,5 +1,5 @@
 ---
-title: Intention at the Nanoscale
+title: "3. Intention at the Nanoscale"
 date: 2026-04-22
 layout: post
 ---
