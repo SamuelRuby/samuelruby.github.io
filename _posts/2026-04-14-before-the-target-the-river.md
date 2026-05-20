@@ -1,9 +1,8 @@
 ---
-title: Before the Target, the River 
+title: "2. Before the Target, the River"
 date: 2026-04-20
 layout: post
 ---
-
 
 
 Before getting into fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but it overlooked the equally important task of developing monitoring infrastructure, the capability to detect internal physiological changes before they escalate into full-blown clinical crisis.
