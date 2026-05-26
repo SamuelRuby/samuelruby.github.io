@@ -5,13 +5,15 @@ layout: post
 ---
 
 
-Before getting into fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said ‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but it overlooked the equally important task of developing monitoring infrastructure, the capability to detect internal physiological changes before they escalate into full-blown clinical crisis.
+Before getting into Fluid Physics, I’d like to revisit a [thread of thought](https://samuelruby.github.io/2026/04/10/the-very-first-sin.html) I opened earlier, where I said *‘We can’t just keep getting better at fighting fires - they keep coming. We also have to build a smoke detector’*. Medicine, for all its brilliance, developed extraordinary treatment infrastructure but overlooked the equally important task of developing the capability to detect internal physiological changes before they escalate into full-blown clinical crisis. The monitoring infrastructure, like we'll call it here.
 
-In Data & ML, deployment is never the end of the pipeline. It’s the beginning of monitoring. We don’t just ship a model and pray, hoping for the best. Monitoring is built around it — data drift detection, performance degradation alerts, anomaly flags, distribution shift tracking,....... the whole shebangs. This is cuz we know that once you stop seeing a system, you’ve already lost it. Intervention is impossible without visibility.
+In Data & ML, deployment is the beginning of monitoring NOT the end of the pipeline. We don’t just ship a model and pray, hoping for the best. Monitoring is built around it — data drift detection, performance degradation alerts, anomaly flags, distribution shift tracking,....... the whole shebangs. This is cuz we know that once you stop seeing a system, you’ve already lost it. Intervention is impossible without visibility.
 
 Biology is a deployed system. The most complex one we know of. And for most of human history, we've been trying to patch and fix without being able to see inside it in real time, at the scale where things actually go wrong.
 
-That's the gap. And that's what this whole project is trying to address. Starting, necessarily, with understanding the environment the nanobots has to navigate. Because before one can monitor anything, we have to learn to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it ‘The River’.
+This gap is what the whole project is trying to address. Starting, necessarily, with understanding the environment the nanobots has to navigate. 
+
+Before one can monitor anything though, we have to learn to survive a host of barriers, principal of which is fluid dynamics, or as I like to call it **‘The River’**.
                                 
           “Water is the driving force of all nature”
                   —Leonardo da Vinci
@@ -23,29 +25,33 @@ Researchers — most of them with deep biological training, years in wet and dry
                  shoulders of many ancestors."   
                                          - African proverb
                                          
-Because of that foundation, we’re not starting from scratch. We’re building on a lineage, so to speak, but also stepping sideways from it. Now we can approach the same terrain from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
+Thanks to that foundation, we’re building on a lineage, so to speak, but also stepping sideways from it. We'll be approaching the same terrain but from a different angle. Where earlier generations focused on biological ingenuity alone, we can now pair biological media with computational intelligence. The result is something hybrid by design: systems that don’t just move through the body, but interpret it.
 
 
 ## The Architecture of Flow
 What we’ve worked on, up to this point, is nanobots in blood flow through the cardiovascular system. So, we have to talk about this  fluid — blood.
 
-Fluid transport is a biological imperative, it being one of the most conserved functions in complex life. Across plants, fungi, and animals, evolution repeatedly converges on the same solution: pumping, circulating, transporting, draining.
+Fluid transport is one of the most conserved functions in complex life. Across plants, fungi, and animals, evolution repeatedly converges on the same solution: pumping, circulating, transporting, draining.
 
-The human vascular system is not a single environment. It is a hierarchy of environments, each with its own physics, its own rules, its own demands on anything trying to move through it. We have the closed loop cardiovascular system: arteries, arterioles, capillaries, venules, veins. Running alongside it is the lymphatic system, which acts as a complementary, one-way network of vessels that returns excess interstitial fluid, macromolecules, and immune cargo and returns them to the bloodstream. If the bloodstream is the highway, the lymphatics are the network of backroads, checkpoints, and cul‑de‑sacs.  Together, they  create a layered landscape of shear forces, pressures, viscosities, and biological checkpoints that anything moving through the body – engineered or otherwise– has to contend with.
+The human vascular system is a hierarchy of environments, each with its own physics, its own rules, its own demands on anything trying to move through it. We have the closed loop cardiovascular system: arteries, arterioles, capillaries, venules, veins. Running alongside it, is the lymphatic system, which acts as a complementary, one-way network of vessels that returns excess interstitial fluid, macromolecules, and immune cargo and returns them to the bloodstream. If the bloodstream is the highway, the lymphatics are the network of backroads, checkpoints, and cul‑de‑sacs.  Together, they  create a layered landscape of shear forces, pressures, viscosities, and biological checkpoints that anything moving through the body – engineered or otherwise– has to contend with.
 
 The aorta sits at the top of the cardiovascular system, roughly about 25 millimeters (mm) in diameter, carrying blood directly from the heart. Below it, large arteries around 4mm. Then small arteries at 1mm. Arterioles at 30 (μm). Then capillaries, about 5 to 10μm — the smallest vessels in the body, so narrow that red blood cells, which are 7 to 8μm in diameter, pass through one at a time, physically deforming to squeeze through. Blood flow velocity across this hierarchy ranges from 100 to 600 mm/s in arteries, dropping significantly as vessels narrow. A nanobot, sized between 100 and 1000 nanometres (nm), sits comfortably below capillary diameter. Perfectly small enough to move freely without deforming. 
 
+![Cardiovascular Vessel Hierachy and Relative sizes](/assets/images/Cardiovascular-vessel_Hierachy.png)
+
 For a nanobot, right from the point of entry, the physics around it keeps changing. Turbulent in the aorta, shear‑dominated in arterioles, viscosity‑ruled in capillaries. Also at that scale, Brownian motion — the random thermal jitter of fluid molecules constantly colliding with everything around them — becomes one of the dominant forces on the system. Why that size, you might wonder. Well, DNA origami nanorobots in literature operate between size ranges of 50 to 200nm, also liposomes used in drug delivery have been validated to work between 50 to 500nm.
 
-The therapeutic effect of the nanobot can only manifest when it gets to its target. Introduced via IV injection into a peripheral vein, it travels to the heart, gets pushed into the aorta, and from there is distributed throughout the body. Which means the first thing it encounters is not going to be a quiet capillary somewhere (which might probably be its site of action), but the aorta. And this is where the physics gets complicated– not merely because the aorta is turbulent, which we’ll get to, but because of the nature of blood itself. 
+The therapeutic effect of the nanobot can only manifest when it gets to its target. Introduced via IV injection into a peripheral vein, it travels to the heart, gets pushed into the aorta, and from there is distributed throughout the body. Which means the first thing it encounters is not going to be a quiet capillary somewhere (which might probably be its site of action), but the aorta. And this is where the physics gets complicated– not merely because the aorta is turbulent, which we’ll get to in a minute, but cuz of the nature of blood itself. 
 
-You see, blood is not a simple fluid, It is a dense suspension of cells (red blood cells, along with platelets and white blood cells) suspended in plasma. In large vessels, where the vessel diameter is much greater than the size of individual cells, you can model blood as a uniform newtonian fluid and get away with it. But as vessels narrow and diameter approaches the size of the cells themselves, that approximation breaks down. Their motion, their deformation, their interaction with vessel walls — all of that becomes part of the physics. Setting the cells composition aside, blood is a non-Newtonian fluid. In a Newtonian fluid like water, viscosity is constant (meaning it does not change with how fast you stir it). However, blood’s viscosity changes with shear rate. In fast flow, blood thins. In slow flow, it thickens. Near vessel walls, where the velocity gradient is steepest, the viscosity a nanobot experiences is different from what it experiences at the centreline.  Which is exactly why, before building anything, one has to understand the fluid mechanics first, and then actually model it, verify it, and see what the physics does.
+You see, blood is not a simple fluid, It is a dense suspension of cells (red blood cells, along with platelets and leukocytes) suspended in plasma. In large vessels, where the vessel diameter is much greater than the size of individual cells, you can model blood as a uniform newtonian fluid and get away with it. But as vessels narrow and diameter approaches the size of the cells themselves, that approximation gives way to the miscroscopic physics of the individual cells. Their motion, their deformation, their interaction with vessel walls.... all of that. Setting the cells composition aside, blood is a non-Newtonian fluid. In a Newtonian fluid like water, viscosity is constant (meaning it does not change with how fast you stir it). However, blood’s viscosity changes with shear rate. In fast flow, blood thins. In slow flow, it thickens. Near vessel walls, where the velocity gradient is steepest, the viscosity a nanobot experiences is different from what it experiences at the centreline. 
+
+Which is exactly why, before building anything, one has to understand the fluid mechanics first, and then actually model it, verify it, and see what the physics does.
 
 
 ### Laminar vs Turbulent
 All this talk about fluid, perfect time to introduce the 2 regimes of fluid flow: 
-- Laminar flow: smooth and orderly flow. Think honey pouring slowly. The fluid moves in parallel layers, each sliding past the next without mixing. You can describe it with clean equations. You can predict exactly where a particle will be 
-- Turbulent flow: chaotic, swirling, full of eddies and vortices —unpredictable structures that form and collapse and reform. Think of rapids in a river, or the wake behind a fast-moving boat. The fluid mixes violently with itself. Particles get thrown in directions you cannot simply calculate.
+- Laminar flow: smooth and orderly flow. Think honey pouring slowly. The fluid moves in parallel layers, each sliding past the next without mixing. 
+- Turbulent flow: chaotic, swirling, full of eddies and vortices — unpredictable structures that form and collapse and reform. Think of rapids in a river, or the wake behind a fast-moving boat. 
 
 So, how do we know which regime we're in? The Reynolds number
 <!-- ![Reynolds Number](/assets/images/What-Is-Reynolds-Number.png) -->
@@ -70,9 +76,9 @@ So, how do we know which regime we're in? The Reynolds number
 * 2300–4000 → Transitional
 
 In blood vessels specifically, the heart's pumping action means the Reynolds number oscillates throughout each cardiac cycle. During systole, when the heart contracts and blood surges, *Re* spikes, sometimes into **transitional** or **turbulent** territory. During diastole, when the heart relaxes, it drops back towards **laminar**. 
-Transitional flow tends to appear in the places where the geometry forces the blood to accelerate, decelerate, or change direction, for example, <u>the aortic root, the ascending aorta, the carotid bifurcation, the branching points of major arteries, and regions downstream of stenoses</u>. These are the zones where Re is high enough (local Reynolds numbers exceed ~2000 during systole and secondary flows --Dean vortices, helical structures-- begin to form)  and the vessel shape is so complex that the flow cannot stay purely laminar, but not chaotic enough to be fully turbulent.
+Transitional flow (zones where local Re numbers exceed ~2000 during systole and secondary flows --Dean vortices, helical structures-- begin to form) tends to appear in the places where the geometry forces the blood to accelerate, decelerate, or change direction, for example, <u>the aortic root, the ascending aorta, the carotid bifurcation, the branching points of major arteries, and regions downstream of stenoses</u>.
 
-So, if we run the numbers, we get:
+When we run the numbers, we get:
 * **Capillaries:** Re ≈ 0.01. Deeply, serenely laminar.
 * **Small arteries:** Re ≈ 100. Still laminar.
 * **Aorta:** Re ≈ 4000–5000. Turbulent, especially during systole.
@@ -80,7 +86,7 @@ So, if we run the numbers, we get:
 A great mental model I've been using is :
 * **Aorta (Highway):** Turbulent, high-speed, chaotic.
 * **Small arteries (Neighbourhood streets):** Laminar, predictable.
-* **Capillaries (Alleyways):** Ultra-laminar, almost still.
+* **Capillaries:** Ultra-laminar, almost still.
     
 
 The nanobot's critical work of targeting, sensing, treatment, all happens in the neighbourhood streets and alleyways. Which means my simulation starts where the physics becomes tractable right after the chaos of the aorta, once the nanobot has been distributed into the smaller vessels network. 
@@ -89,7 +95,7 @@ The nanobot's critical work of targeting, sensing, treatment, all happens in the
 
 ### The shape of flow — Poiseuille's equation
 
-Inside a small blood vessel (helps to visualize this as a roughly cylindrical tube), flow driven by pressure takes a very specific shape. It is not uniform. The fluid at the very centre of the vessel moves fastest, while the fluid at the wall moves slowest, technically reaching zero velocity right at the wall surface. The transition between those two extremes follows like a parabola.
+Inside a small blood vessel (helps to visualize this as a roughly cylindrical tube), flow driven by pressure takes a very specific parabolic shape. The fluid at the very centre of the vessel moves fastest, while the fluid at the wall moves slowest, technically reaching zero velocity right at the wall surface. The transition between those two extremes follows like a parabola.
 <figure>
   <img src="/assets/images/Poiseuille Flow Velcity Profile.png" alt="Poiseuille Flow Velcity Profile"> 
   <figcaption> Fig 3: The parabolic velocity profile across a small blood vessel (radius 0.5mm). Velocity peaks at the centreline (~360 mm/s) and falls to exactly zero at the vessel walls.</figcaption>
@@ -111,7 +117,7 @@ Where:
 * **μ:** dynamic viscosity
         
         * At r = 0 (centre): v = v_max
-        * At r = R (wall): v = 0
+  * At r = R (wall): v = 0
 
 **The wall velocity being zero is called the *no-slip condition*, that is the fluid layer immediately in contact with the vessel wall that sticks to it**.
 
@@ -127,7 +133,7 @@ Recall earlier, we said blood is non-newtonian and poiseuille flow is used to mo
 
 
 ### Stokes drag
-As mentioned earlier, at nanoscale, viscosity dominates. At human scale, if you jump into a swimming pool, inertia carries you. You coast. At nanobot scale, there is no coasting. The moment you stop applying force, you stop. The fluid's viscosity — its resistance to flow, its internal friction — overwhelms inertia completely. The relevant force here is **Stokes drag**. We can define it as the resistive force a small sphere feels as it moves through a viscous fluid.
+As mentioned earlier, at nanoscale, viscosity dominates. At human scale, if you jump into a swimming pool, you coast because inertia carries you. At nanobot scale, there is no coasting. The moment you stop applying force, you stop. The fluid's viscosity — its resistance to flow, its internal friction — overwhelms inertia completely. The relevant force here is **Stokes drag**. We can define it as the resistive force a small sphere feels as it moves through a viscous fluid.
 
 <figure>
   <img src="/assets/images/stokes law.jpg" alt="Stokes' Law"> 
@@ -161,15 +167,14 @@ Simulation confirms this. A single nanobot placed slightly off-centre, given zer
   <img src="/assets/images/plot_single_nanobot_trajectory.png" alt="Single Nanobot Trajectory + Velocity vs Time">
   <figcaption>
     <strong>Fig 5: Single Nanobot Trajectory + Velocity vs Time.</strong><br>
-    <em>Top:</em> nanobot path through the vessel — straight line at constant radial position, carried by the flow. 
+    <em>Top:</em> nanobot path through the vessel — straight line at constant radial position, carried by flow. 
     <em>Bottom:</em> nanobot velocity snaps to the local blood velocity almost instantly, then holds steady. 
-    That spike at t=0 and immediate plateau is the Stokes drag doing exactly what the physics predicts. 
-    τ is so small it's barely visible on this timescale.
+    That spike at t=0 and immediate plateau is the Stokes drag do.
   </figcaption>
 </figure>
 
 ### Brownian Motion
-Fluid molecules are never still. At any temperature above absolute zero, they are constantly jiggling — vibrating, colliding, bouncing off each other and off anything else in their path. A nanobot in blood will certainly be surrounded by billions of these collisions every microsecond, with most of them canceling out. The net result is then a random, persistent displacement — a jitter superimposed on whatever the flow is doing. At nanoscale, brownian motion isn't negligible and is actually one of the dominant forces
+Fluid molecules are never still. At any temperature above absolute zero, they are constantly jiggling, vibrating, colliding, bouncing off each other and off anything else in their path. A nanobot in blood will certainly be surrounded by billions of these collisions every microsecond, with most of them canceling out. The net result is then a random, persistent displacement — a jitter superimposed on whatever the flow is doing. At nanoscale, brownian motion is actually one of the dominant forces.
 
 <figure>
   <img src="/assets/images/brownian motion image.png" alt="brownian motion"> 
@@ -204,9 +209,7 @@ Now at body temperature, with the above given radius and viscosity, a nanobot wi
 * At Δt = 0.001s: σ ≈ 36nm per millisecond
 
 
-Thirty-six nanometres per millisecond! In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, this is significant. It is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
-
-This scale-dependence is one of the more interesting things, and I want to share it directly because I think it is more intuitive as a picture than as a number.
+Thirty-six nanometres per millisecond! In a small artery with a radius of 500 micrometres, that is essentially invisible, as flow dominates completely. But in a capillary of radius 5 micrometres, it is more than half a percent of the vessel radius per timestep. And over time, it adds up to a visible random walk.
 
 <figure>
   <img src="/assets/images/plot heatmap brownian.png" alt="Nanobot on Velocity Heatmap"> 
@@ -215,9 +218,8 @@ This scale-dependence is one of the more interesting things, and I want to share
 
 
 **Technical Breakdown**
-* Velocity Heatmap (Top): Represents the parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow. Red at the fast-moving centre, blue near the slow walls. The nanobot's path is the black line overlaid. It travels straight, carried by the flow.
-* Radial Displacement (Bottom): Nanobot's radial position over time. Brownian motion is present but in a small artery it is effectively invisible, as indicated by the near-flat profile
-
+* Velocity Heatmap (Top): Represents the **parabolic velocity profile characteristic of laminar (Hagen-Poiseuille) flow**. Red at the fast-moving centre, blue near the slow walls. The nanobot travels straight, carried by flow.
+* Radial Displacement (Bottom): **Nanobot's radial position over time**. Brownian motion is present but in a small artery it is effectively invisible, as indicated by the near-flat profile
 
 Up till now, we have spoken about 1 single nanobot, but what we’re actually aiming for is a swarm — thousands/millions of coordinated, distributed, collectively working nanobots. So the next question becomes: What does the Poiseuille profile do to a group?
 
@@ -233,7 +235,7 @@ Releasing 20 nanobots simultaneously, placed at different radial positions acros
 * The ones near the walls, in the slow blue zone lag behind (no-slip condition ). 
 
 
-  *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together. Collective behaviour has to be designed for separation, not assumed proximity.*
+  *As you can see, the velocity field disperses the swarm spatially, which has implications for how swarm coordination needs to work: nanobots released together will not stay together. So, collective behaviour will have to be designed for separation, not assumed proximity.*
 
           
 ### Three vessels, three physics regimes
@@ -245,7 +247,7 @@ The same nanobot passing through three different vessel environments — a small
     <strong>Fig 9: Three Scenarios Side by Side (Static).</strong><br>
     <em>Left column:</em> Nanobot trajectory in each vessel type. 
     <em>Right column:</em> Radial position over time, showing Brownian fluctuations.
-    <em>Small artery (top):</em> Brownian motion is negligible (36nm per millisecond — but against a 500μm vessel radius it registers as nothing).
+    <em>Small artery (top):</em> Brownian motion is negligible (36nm per millisecond but against a 500μm vessel radius, it registers as nothing).
     <em>Capillary (middle):</em> the wiggly green line, Brownian motion is more noticeable. Here the vessel is 5μm across, and the same 36nm Brownian kick is now a real force. Due to slow flow, dominant
     viscosity, extremely low Re, and relatively larger diffusion coefficient
     Exaggerated Brownian (bottom)
@@ -254,9 +256,9 @@ The same nanobot passing through three different vessel environments — a small
       
 ## What comes next
 
-Phase 1 established the fundamentals. The parabola is real. The drag is instantaneous. Brownian motion is scale-dependent and matters in capillaries. The swarm disperses with the flow.
+Here, we established the fundamentals. and concluded, amongst other things, that brownian motion is scale-dependent and matters in capillaries.
 
-Phase 2 moves into three dimensions (**3D**). Cylindrical vessels, Y-shaped bifurcations, the question of how a nanobot chooses which branch to take. The answer, at least in biology, involves chemical gradients. Every disease, every tumour, every site of infection has a molecular signature — a concentration field that diffuses outward from the source. How to model that will be a topic of discussion in a coming post.
+Phase 2 moves into three dimensions (**3D**). Cylindrical vessels, Y-shaped bifurcations, the question of how a nanobot chooses which branch to take. The answer, at least in biology, involves chemical gradients. Every disease, every tumour, every site of infection has a concentration field that diffuses outward from the source. How to model that will be a topic of discussion in a coming post.
 
 
 ## Sources & Further Reading
