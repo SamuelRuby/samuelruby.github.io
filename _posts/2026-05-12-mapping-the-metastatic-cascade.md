@@ -14,7 +14,7 @@ This post integrates those individual layers, transitioning from isolated algori
 **Lynch Syndrome** (Hereditary Non-Polyposis Colorectal Cancer) is characterized by germline mutations in DNA mismatch repair genes (MLH1, MSH2, MSH6, PMS2), producing aggressive, high-instability (MSI-H) tumors. The primary challenge of this pathology lies in its unpredictability and its multi-focal presentation.
 A Lynch carrier doesn't just face an exceptionally high lifetime risk of colorectal cancer (up to 82%), but also the imminent threat of synchronous primaries—two or more independent cancers arising simultaneously in different organs, such as the endometrium (up to 60%) or the liver. Because current surveillance protocols are invasive, costly, and frequently miss early-stage anomalies, patients often present with advanced, multi-organ disease that overwhelms traditional localized therapies.
 
-And this is exactly where our architecture excels. We fill in the:
+And this is exactly where our architecture excels. We fill in:
 * **The Surveillance Gap**: Where current protocols are invasive and often miss advanced disease.
 * **The Detection Challenge**: A system that can patrol multiple organs simultaneously.
 * **The Coordination Requirement**: A swarm that can identify a "noise" signal in the colon while maintaining a "sentinel" presence in the liver.
@@ -25,7 +25,7 @@ In the simulation scenario that follows, we modeled a complex Lynch Syndrome pre
 * Hepatocellular Carcinoma (HCC): Located in the right hepatic lobe and vascularized via the hepatic segmental artery.
 * Colorectal Carcinoma (CRC): Located in the sigmoid colon and vascularized via the inferior mesenteric artery (IMA).
 
- 250 agent nanobots introduced intravenously via a single intravenous injection into the descending aorta. Zero a priori data regarding tumor location, organ pairing, or presence. No central controller. The system relies strictly on localized gradient sensing, the peer-to-peer beacon protocol, and threat-score-driven resource allocation.
+ 250 agent nanobots introduced intravenously via a single intravenous injection into the descending aorta. Zero a priori data regarding tumor location, organ pairing, or presence. No central controller. The system relies strictly on localized gradient sensing, peer-to-peer beacon protocol, and threat-score-driven resource allocation.
   ![/lynch_syndrome_scenario](/assets/images/lynch_syndrome_scenario.png)
 
 ### THE H-TREE
@@ -38,13 +38,12 @@ Within this H-tree framework, each daughter branch scales strictly according to 
    ![/H-tree vascular network schematic](/assets/images/Htree_vascular_network_diagram2.png)
 
    
-Two disease targets: Site A (Liver, initial health=1.0) and Site B (Lung, initial health=0.6). 200 nanobots. No target coordinates pre-loaded, autonomous gradient-seeking logic.
-
+Two disease targets: Site A (Liver, initial health=1.0) and Site B (Lung, initial health=0.6). 200 nanobots. 
 Initial target interception at the liver site was achieved via stochastic search, with a single agent anchoring there. The subsequent beacon deployment initiated a rapid, non-linear recruitment phase. Following this phase, 73 agents concurrently anchored at the target zone. The target's functional viability dropped from 1.0 to 0.0 in under 10 seconds of peak agent density. And upon target neutralization, the primary beacon network deactivated, prompting the remaining unanchored population to redirect toward the surviving disease signal in the lungs.
 
 The lung clearance was immediate, followed by a system-wide differentiation and shutdown protocol. Of the surviving agents:
 * 9 **sentinels** differentiated into persistent monitoring roles.
-* 102 agents** entered an unallocated, low-energy standby state.
+* 102 **agents** entered an unallocated, low-energy standby state.
 * 68 **agents** initiated programmed, non-inflammatory cellular clearance.
 
 ![/Lynch Clearance Info](/assets/images/lynch_clearance details.jpg)
@@ -70,7 +69,7 @@ The swarm arrived at the same triage logic a medical team would apply: address t
 ### Phase III: Anatomical Reality
 In Phase III, we move from the idealized H-tree to true anatomical geometry. The vascular network is no longer a symmetric abstraction here but a directed graph of **19 nodes and 24 edges** representing the actual branching architecture of the human abdominal vasculature. This model includes the primary vessels supplying the liver, colon, spleen, stomach, and small intestine; all loaded from a JSON specification with physically calibrated radii, lengths, and flow velocities.
 
-The injection point is the **descending aorta**. From there, nanobots transit through the celiac trunk to reach hepatic circulation, or through the superior mesenteric artery (SMA) and inferior mesenteric artery (IMA) to reach the colonic network. Crucially, the model includes a **venous return loop**: agents that miss their target recirculate and attempt the passage again, with one complete circulation taking approximately 2.2 seconds at centerline velocity.
+The injection point is the **descending aorta**. From there, nanobots transit through the celiac trunk to reach hepatic circulation, or through the superior mesenteric artery (SMA) and inferior mesenteric artery (IMA) to reach the colonic network. Crucially, the model includes a **venous return loop**, i.e, agents that miss their target can recirculate and attempt the passage again, with one complete circulation taking approximately 2.2 seconds at centerline velocity.
 
 ![/Phase 3 Vascular Anatomical Geometry](/assets/images/phase3_abdominal_vasculature.png)
 
@@ -79,23 +78,24 @@ The injection point is the **descending aorta**. From there, nanobots transit th
 
 A critical engineering decision in this architecture is the **Multi-Scale Physics Gating**. In a system of this complexity, simulating every physical force at every scale would be computationally prohibitive and scientifically redundant. Instead, the simulation "unlocks" levels of physical detail only when they become relevant to the agent’s behavior.
 
-In macro vessels (radius above 1mm, flow velocity 150–400mm/s), a nanobot thrust of 150 fN produces an effective swimming speed of ~23 μm/s—roughly, 1:10000 against the current. At this scale, simulating Brownian motion, chemotaxis, and wall confinement in these vessels would consume computational resources to model physics that has no meaningful effect on outcome. So in macro vessels: passive transit only. 1D flow. No Brownian noise. No chemotaxis. Fast computation.
+In macro vessels (radius above 1mm, flow velocity 150–400mm/s), a nanobot thrust of 150 fN produces an effective swimming speed of ~23 μm/s, roughly, 1:10000 against the current. At this scale, simulating Brownian motion, chemotaxis, and wall confinement in these vessels would consume computational resources to model physics that has no meaningful effect on outcome. So in macro vessels: passive transit only. 1D flow. No Brownian noise. No chemotaxis. Fast computation.
 
-In micro vessels (radius below 1mm, flow slowing to 40–80mm/s), while the agents direct upstream propulsion remains impossible, their thrust (~0.05% of flow velocity) becomes sufficient to influence its lateral trajectory. At this scale, Brownian motion (σ=36nm/timestep) becomes highly significant relative to the vessel radius. Local chemotactic gradients become detectable, wall biundary interactions are computed, and the agent begins executing autonomous path-selection logic. This transition occurs precisely at the boundary between terminal arterioles and segmental capillaries; the exact anatomical point where the capillary bed begins. Abstracting the fluid mechanics through this scale-dependent gating mechanism enforces physiological accuracy while maintaining the computational performance required for million-agent populations.
+In micro vessels (radius below 1mm, flow slowing to 40–80mm/s), while the agents direct upstream propulsion remains impossible, their thrust (~0.05% of flow velocity) becomes sufficient to influence its lateral trajectory. At this scale, Brownian motion (σ=36nm/timestep) becomes highly significant relative to the vessel radius. Local chemotactic gradients become detectable, wall boundary interactions are computed, and the agent begins executing autonomous path-selection logic. This transition occurs precisely at the boundary between terminal arterioles and segmental capillaries. Abstracting the fluid mechanics through this scale-dependent gating mechanism enforces physiological accuracy while maintaining the computational performance required for million-agent populations.
 
 For the multi-focal Lynch Syndrome scenario, the simulation initialization is defined as follows:
 
 * Population Density: 250 agent units deployed intravenously into the primary anatomical network.
 * Phenotypic Profiling: Both the hepatocellular carcinoma (HCC) and colorectal cancer (CRC) sites are configured with identical molecular signatures.
+
 This configuration reflects the clinical reality of Lynch Syndrome, where synchronous primary tumors share the same underlying mismatch-repair-deficient (MMR-D) phenotype, presenting a single biological signature across distinct anatomical compartments.
 ![/Transit times at centreline velocity](/assets/images/transit_times.jpg)
 
-The simulation results for infiltration efficiency are striking. Both targets were successfully infiltrated within the first two seconds, before the majority of the swarm had even been injected.
+Both targets were successfully infiltrated within the first two seconds, before the majority of the swarm had even been injected.
 
-* **Colon Infiltration (t=1.4s)**: Worker #7 reached the sigmoid terminal capillary in 1.4 seconds. This is notably faster than the theoretical centerline transit time of 1.56 seconds.
-* **Liver Infiltration (t=1.8s)**: Worker #114 reached the hepatic segmental capillary in 1.8 seconds, beating the theoretical estimate of 2.21 seconds.
+* **Colon Infiltration (t=1.4s)**: Worker #7 reached the sigmoid terminal capillary in 1.4 seconds, notably faster than the theoretical centerline transit time of 1.56 seconds.
+* **Liver Infiltration (t=1.8s)**: Worker #114 reached the hepatic segmental capillary in 1.8 seconds, also beating the theoretical estimate of 2.21 seconds.
 
-How is this possible? Well, the 'Poiseuille profile'! Nanobots injected near the centerline of the macro vessels travel significantly faster than the average flow velocity. By "riding" the peak of the velocity curve, these early arrivals provide the swarm with almost instantaneous sensory coverage of the entire abdominal cavity.
+How is this possible? The Poiseuille profile! Nanobots injected near the centerline of the macro vessels travel significantly faster than the average flow velocity. By "riding" the peak of the velocity curve, these early arrivals provide the swarm with almost instantaneous sensory coverage of the entire abdominal cavity.
 
 The log data also reveals that the liver target (Health: 1.0) presented a stronger initial gradient than the colon (Health: 0.7). As a result, the swarm did not split 50/50. Instead, it "voted" with its trajectory.
 * By **t=4.5s**, 40 nanobots had already converged on the liver, triggering the first **LIVER CLEARED** beacon.
@@ -108,7 +108,7 @@ Once the acute treatment phase concluded, the swarm executed its differentiation
 * **Sweep Patrol (131 agents)**: Launched a broad-spectrum surveillance mission to detect micro-metastases that were initially below detection thresholds.
 * **Apoptosis**: Units that were faulty or reached their energy floor exited the system gracefully, preventing vessel clutter.
 
-At a timestep of **dt=5ms**, this simulation processed **9 million state updates**. It accounted for Murray Ratio violations in the diseased hepatic vasculature, where tumor-induced remodeling changes routing probabilities and maintained the physics of scale throughout. The result is a system that manages a clinical lifecycle from the first second of injection through to the long-term sentinel phase.
+At a timestep of **dt=5ms**, this simulation processed **9 million state updates**. It accounted for Murray Ratio violations in the diseased hepatic vasculature, where tumor-induced remodeling changes routing probabilities, and maintained the physics of scale throughout. Now, we have a system that manages a clinical lifecycle from the first second of injection through to the long-term sentinel phase.
 
 ![/Lynch Simulation Table](/assets/images/simulation_tabel_lynch.png)
 
@@ -179,8 +179,7 @@ Because the signatures are reliably separable, a nanobot detecting the liver sig
   * **Zero Cross-Contamination**: CRC-specific payloads are never wasted on HCC sites, and vice versa.
 We have now moved beyond "search and destroy" to a system capable of **simultaneous, multi-target differential treatment**.
 
-At the differentiation (DIFF) event, the swarm must decide how to optimize resource allocation across its restricted population. Rather than a simple 50/50 split, the system computes a dynamic **Threat Score** for each localized pathology to determine the ideal sub-swarm distribution ratio.
-The framework evaluates urgency using a dual-factor objective function:
+At the differentiation (DIFF) event, the swarm must decide how to optimize resource allocation across its restricted population. Rather than a simple 50/50 split, the system computes a dynamic **threat score** for each localized pathology to determine the ideal sub-swarm distribution ratio.Urgency is evaluated using a dual-factor objective function as shown below:
 ![/Threat score formula](/assets/images/Threat_score_formula.png)
 
 For this deployment validation, the weights were initialized at **α** = 0.35 and **β** = 0.65. This aggressive prioritization of the kinetic rate of change **β** explicitly translates clinical oncology protocols for managing microsatellite instability-high (MSI-H) malignancies into autonomous agent logic.
@@ -251,24 +250,24 @@ This distribution pattern operationalizes a core principle of precision oncology
 
 
 ###  Discussion: Validated Architectures vs. Translational Boundaries
-**The Demonstrated***: We have established a computational framework for autonomous, multi-site oncology interventions that yields clinically coherent outcomes across three distinct validation tiers:
+**The Demonstrated**: We have established a computational framework for autonomous, multi-site oncology interventions that yields clinically coherent outcomes across three distinct validation tiers:
 * Idealized Morphologies (H-Tree Framework): A 200-agent population successfully localized and neutralized two unmapped disease sites within 14.55 seconds, relying solely on stochastic search and local gradient-seeking mechanics.
 * Full Anatomical Integration (Phase 3.1): A 250-agent population navigated a realistic abdominal vascular network, intercepting simultaneous targets within 2.0 seconds of injection and executing a complete treatment-to-apoptosis lifecycle.
 * Phenotypic Discrimination (Phase 3.2): The control architecture successfully differentiated between two molecularly distinct pathologies (cosine similarity 0.501). The population programmatically partitioned into independent sub-swarms, allocated resources according to a dynamics-weighted Threat Score (65% to Liver, 35% to Colon), and achieved complete target clearance with zero cross-contamination.
   
 Every component of this framework is modeled from first principles: Poiseuille flow profiles, Stokes drag mechanics, and Brownian diffusion σ=36nm/ms. The underlying control logic, from the cosine similarity classification matrix to Murray’s Law compliant branching, is structurally integrated with real-world physiological parameters.
 
-**The Undemonstrated (The Physical Translation Gap)**: Manufacturing a 100nm physical device capable of sustained flagellar propulsion, multiplexed molecular sensing, and active immune evasion remains an open micro-engineering frontier. Translating this architecture from in silico to in vivo involves highly complex biological variables that require independent physical validation:
+**The Undemonstrated (The Physical Translation Gap)**: Manufacturing a 100nm physical device capable of sustained flagellar propulsion, multiplexed molecular sensing, and active immune evasion remains an open micro-engineering frontier. Translating this architecture from in-silico to in-vivo involves highly complex biological variables that require independent physical validation:
   * Non-Newtonian Rheology: Accounting for localized hemodynamics, shear-thinning behavior, and red blood cell crowding effects at the capillary scale.
   * Active Immunogenicity: Mitigating the reticuloendothelial system's (RES) clearance mechanisms and immediate inflammatory responses to foreign synthetic agents.
-  * In Vivo Pharmacokinetics: Mapping the metabolic pathways, systemic degradation timelines, and clearing mechanisms of the primary structural substrates.
+  * In-Vivo Pharmacokinetics: Mapping the metabolic pathways, systemic degradation timelines, and clearing mechanisms of the primary structural substrates.
 
 If a physical nanobot platform matching these operational parameters can be realized, a milestone increasingly supported by advancements in synthetic DNA origami and enzymatic bio-hybrid propulsion, the decentralized swarm intelligence required to govern it is already computationally validated.
 
 ### Future Work: Phase 4 Architecture
 The next development phase targets three open operational challenges not yet addressed by the current control framework:
-* In Situ Energy Harvesting: The current model operates on a fixed, non-renewable energy budget. While sufficient for brief, acute treatment windows, long-term monitoring requires a sustainable power architecture. Phase 4 will explore metabolic harvesting loops that extract ATP directly from blood glucose substrates to sustain persistent sentinel operations.
-* Blood-Brain Barrier (BBB) Transmigration: Navigating neuro-oncological targets requires specialized transport mechanics. Future iterations will model autonomous BBB penetration utilizing biomimetic "Trojan horse" strategies, such as functionalizing agent surfaces with ligands that exploit receptor-mediated transcytosis. *could be something worth looking into*
+* In Situ Energy Harvesting: The current model operates on a fixed, non-renewable energy budget. While sufficient for brief acute treatment windows, long-term monitoring requires a sustainable power architecture. Phase 4 will explore metabolic harvesting loops that extract ATP directly from blood glucose substrates to sustain persistent sentinel operations.
+* Blood-Brain Barrier (BBB) Transmigration: Navigating neuro-oncological targets requires specialized transport mechanics. Future iterations will model autonomous BBB penetration utilizing biomimetic "Trojan horse" strategies, such as functionalizing agent surfaces with ligands that exploit receptor-mediated transcytosis. *could be something worth looking into.*
 * Reconfigurable Self-Assembly: To prevent premature renal clearance and enhance localized therapeutic payloads, agents must dynamically adjust their effective volume. We are designing multi-agent rules that allow independent nanobots to temporarily self-assemble into larger functional macrosystems upon target localization, reversing back into individual units for systemic clearance.
 
 ---
